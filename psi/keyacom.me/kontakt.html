@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="skin_0.css">
+    <link rel="icon" href="favicon.ico">
+    <title>Projekt strony | Dane kontaktowe</title>
+    <script>
+        function spr(form) {
+            let nameRegex = /[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]{2,}/;
+            if (!nameRegex.test(form.imie.value.trim())) {
+                alert("Pole \"Imię\" musi zawierać co najmniej 3 znaki");
+                form.imie.focus();
+                return false;
+            } else if (!nameRegex.test(form.nazwisko.value.trim())) {
+                alert("Pole \"Nazwisko\" musi zawierać co najmniej 3 znaki");
+                form.imie.focus();
+                return false;
+            } else if (eq[1] == "+" && parseInt(form.mat.value) != eq[0] + eq[2]) {
+                alert("Równanie ma błędne rozwiązanie");
+                form.mat.focus();
+                return false;
+            } else if (eq[1] == "-" && parseInt(form.mat.value) != eq[0] - eq[2]) {
+                alert("Równanie ma błędne rozwiązanie");
+                form.mat.focus();
+                return false;
+            } else if (eq[1] == "×" && parseInt(form.mat.value) != eq[0] * eq[2]) {
+                alert("Równanie ma błędne rozwiązanie");
+                form.mat.focus();
+                return false;
+            } else if (eq[1] == "÷" && parseInt(form.mat.value) != eq[0] / eq[2]) {
+                alert("Równanie ma błędne rozwiązanie");
+                form.mat.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <main>
+        <p class="noindent"><b>Niektóre dane są celowo fałszywe i mogą być ze sobą niezgodne!</b></p>
+        <ul>
+            <li>Imię i nazwisko: Wojciech Marzec</li>
+            <li>Adres: ul. Starachowicka 12</li>
+            <li>Miejscowość: 42-173 Służew</li>
+            <li>Nr telefonu: +48 566 122 444</li>
+            <li>Adres e-mail: webmaster<span class="tooltip">[at]<span class="tooltiptext">@</span></span>keyacom<span class="tooltip">[dot]<span class="tooltiptext">.</span></span>me</li>
+        </ul>
+        <p class="noindent">Uwaga: Celowo zmieniłem @ na [at] i . na [dot] ze względu na „żniwiarki spamowe”.</p>
+        <h2>Formularz kontaktowy z webmasterem</h2>
+        <p class="noindent">Znak <span class="req">*</span> oznacza pola wymagane.</p>
+        <fieldset>
+            <legend>Formularz kontaktowy</legend>
+            <form onsubmit="return spr(this)" method="post" id="form_kontakt">
+                <div><label for="-form-1-imie" class="for-req">Imię</label><input type="text" id="-form-1-imie" name="imie" placeholder="Jan" minlength="3" required></div>
+                <div><label for="-form-1-nazwisko" class="for-req">Nazwisko</label><input type="text" id="-form-1-nazwisko" name="nazwisko" placeholder="Kowalski" required></div>
+                <div><label for="-form-1-email" class="for-req">Adres e-mail</label><input type="email" id="-form-1-email" name="email" placeholder="jan.kowalski@example.com" autocomplete="off" required></div>
+                <div class="span-whole"><label for="-form-1-temat">Temat wiadomości</label><input type="text" id="-form-1-temat" name="temat" placeholder="&lt;brak tematu&gt;"></div>
+                <div class="span-whole"><label for="-form-1-tresc">Treść wiadomości</label><textarea rows="10" id="-form-1-tresc" placeholder="&lt;treść pusta&gt;"></textarea></div>
+                <div><label id="equationLabel" for="-form-1-mat" class="for-req"></label>
+                <input type="number" id="-form-1-mat" name="mat" placeholder="Rozwiąż równanie" required></div>
+            </form>
+            <div class="centering-box">
+                <input type="submit" form="form_kontakt">
+            </div>
+        </fieldset>
+    </main>
+    <script src="script.js"></script>
+    <script src="skin_0.js"></script>
+    <script>
+        /* Generuje działanie matematyczne na potrzeby weryfikacji, czy się nie jest robotem */
+        let n1 = Math.floor(Math.random()*7)+1;
+        let n2 = Math.floor(Math.random()*7)+1;
+
+        let ops = ["+","-","×","÷"];
+
+        let eq = [n1,ops[Math.floor(Math.random()*4)],n2];
+
+        if (eq[1] == "-" && eq[0] < eq[2]) { [eq[0],eq[2]] = [eq[2],eq[0]]; } // jeśli pierwsza liczba jest większa od drugiej, zamień ich kolejność
+        if (eq[1] == "-") { eq[0] += 1; }
+        if (eq[1] == "×") { eq[0] = Math.max(eq[0],2); eq[2] = Math.max(eq[2],2); }
+        if (eq[1] == "÷") { eq[2] = Math.max(eq[2],2); eq[0] *= eq[2]; } // Nie ma potrzeby sprawdzania, czy druga liczba to 0, ponieważ zawsze wygeneruje co najmniej 1
+
+        eqStr = eq.join(" ");
+
+        document.getElementById("equationLabel").innerHTML = "Weryfikacja: " + eqStr;
+    </script>
+</body>
+</html>

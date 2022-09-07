@@ -1,0 +1,155 @@
+code, pre {
+    font-family: 'Source Code Pro',Consolas,'Courier New',monospace;
+    background-color: #eee;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+}
+
+code {
+    border: 1px solid #ddd;
+}
+
+pre {
+    border-top: 1px dashed blue;
+    border-bottom: 1px dashed blue;
+}
+
+.sh, .sh .c-unset {
+    color: black;
+}
+
+.sh .c-comment {
+    color: #696969;
+    font-style: italic;
+}
+
+.sh .c-1 {
+    color: green;
+    font-weight: bold;
+}
+
+.sh .c-2 {
+    color: #bb7700;
+}
+
+.sh .c-3 {
+    color: #8844ff;
+}
+
+.sh .c-4 {
+    color: #ff8811;
+}
+
+.sh .c-5 {
+    color: #66bbbb;
+}
+
+.sh .c-err {
+    color: #ff1111;
+}
+
+.sh .c-6 {
+    color: #881111;
+}
+
+.sh [class^="c-"] {
+    font-family: inherit;
+}
+
+/* Tooltipy */
+
+.tooltip {
+    cursor: help;
+    text-decoration: underline dotted;
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    --width: clamp(60px,120px,300px);
+    width: var(--width,120px);
+    background: #111;
+    color: #eee;
+    padding: 5px 0;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+    bottom: 100%;
+    left: 50%;
+    margin-left: calc(var(--width,120px) / -2);
+    opacity: 0;
+    transition: .3s;
+
+    /* Reset właściwości */
+
+    cursor: initial;
+    font-weight: initial;
+    font-style: initial;
+    text-transform: initial;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Trójkącik na dole */
+
+.tooltiptext::after {
+    content: ' ';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #111 transparent transparent transparent;
+}
+
+br.c-left { clear: left; }
+br.c-right { clear: right; }
+br.c-all { clear:both; }
+
+label.for-req::after {
+    content: "*";
+}
+
+label.for-req::after, .req {
+    color: red;
+    font-weight: bold;
+}
+
+.pos-l { float: left; }
+.pos-c { margin-left: auto; margin-right: auto; }
+.pos-r { float: right; }
+
+.centering-box {
+    display: flex;
+    justify-content: center;
+}
+
+#strength-test li[id|="strength"].fulfilled {
+    color: #11aa11;
+}
+
+#strength-test li[id|="strength"]::marker {
+    content: "❌";
+}
+
+#strength-test li[id|="strength"].fulfilled::marker {
+    content: "✅";
+}
+
+ul.form {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.form ul.form {
+    margin: 0;
+    padding-inline-start: 1.2rem;
+}
