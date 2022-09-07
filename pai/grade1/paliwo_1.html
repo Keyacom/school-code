@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<script>
+		function cena() {
+			let rodzaj = document.getElementById("rodzaj").value;
+			let litry = document.getElementById("ile").value;
+			let cena = litry;
+			if (rodzaj == 1) {
+				cena *= 4;
+			} else if (rodzaj == 2) {
+				cena *= 3.5;
+			} else {
+				cena = 0;
+			}
+			cenaStr = cena.toString().replace(".",",");
+			if (cena % 1 > 0) {cenaStr += "0"}
+			if (cena % 1 == 0) {cenaStr += ",00"}
+			document.getElementById("cena").innerHTML = "Cena paliwa: "+cenaStr+" zł za "+litry+" l "+(rodzaj == 1 ? "benzyny" : (rodzaj == 2 ? "oleju napędowego" : "innego paliwa"))+"."
+		}
+	</script>
+	<style>
+		ul.form {list-style-type: none;}
+		ul.form li {margin-left: 0; padding: 5px 0;}
+	</style>
+</head>
+<body>
+	<h3>Oblicz koszt paliwa</h3>
+	<ul class="form">
+		<li>Rodzaj paliwa: <input type="number" id="rodzaj"/></li>
+		<li>(1 &mdash; benzyna, 2 &mdash; olej napędowy)</li>
+		<li>Ile litrów: <input type="number" id="ile"/></li>
+		<li><input type="button" value="Oblicz" onclick="cena()"/></li>
+		<li id="cena"></li>
+	</ul>
+</body>
+</html>

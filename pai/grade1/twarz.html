@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function calcPrice() {
+			let price = 0;
+			if (document.getElementById("chk1").checked) {price += 45};
+			if (document.getElementById("chk2").checked) {price += 30};
+			if (document.getElementById("chk3").checked) {price += 20};
+			if (document.getElementById("chk4").checked) {price += 5};
+			document.getElementById("cena").innerHTML = "Cena: "+price+" zł";
+		}
+	</script>
+	<style>
+		ul.form {list-style-type: none;}
+		ul.form li {margin-left: 0; padding: 5px 0;}
+	</style>
+</head>
+<body>
+	<h3>Sprawdź cenę swojej wizyty</h3>
+	<ul class="form">
+		<li><input type="checkbox" id="chk1"/> Piling</li>
+		<li><input type="checkbox" id="chk2"/> Maska</li>
+		<li><input type="checkbox" id="chk3"/> Masaż twarzy</li>
+		<li><input type="checkbox" id="chk4"/> Regulacja brwi</li>
+		<li><input type="button" value="Oblicz cenę" onclick="calcPrice()"/></li>
+		<li id="cena">Cena: NaN zł</li>
+	</ul>
+</body>
+</html>

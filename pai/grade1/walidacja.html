@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ćwiczenie - walidacja</title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 0.875em;
+        }
+
+        ul.form {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        ul.form ul.form {
+            margin-left: 1.25rem;
+        }
+
+        ul.form > li {
+            padding: 2px;
+        }
+
+        fieldset {
+            border-color: #4444cc;
+            border-style: solid;
+            border-radius: 0.7rem;
+            background: #ccccff;
+            width: fit-content;
+        }
+
+        legend {
+            border-radius: 0.35rem;
+            border: 2px solid #4444cc;
+            background-color: white;
+            padding: 2px 5px;
+        }
+
+        input[type="text" i], select {
+            border-radius: 0.35rem;
+            border: 1px solid #4444cc;
+            padding: 2px 5px;
+        }
+
+        input[type="radio" i] {
+            border: 1px solid #4444cc;
+        }
+    </style>
+    <script>
+        function walidacja(form) {
+            let f_name_regex = /^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]{2,}$/;
+            let l_name_regex = /^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]{2,}(-[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]{2,})?$/;
+            let p_name_regex = /^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]{2,}([ -][A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]{2,})*$/;
+            let tel_regex = /^\d{9}$/;
+            let postcode_regex = /^\d{2}-\d{3}$/;
+            let email_regex = /^[\da-z_.-]+@[\da-z_.-]+\.[a-z]{2,3}$/i;
+            let bldg_num_regex = /^\d+[A-Z]?(\/\d+)?$/;
+
+            if (form.imie.value.trim() == "") {
+                alert("Wypełnij pole \"Imię\".");
+                form.imie.focus();
+                return false;
+            } else if (!f_name_regex.test(form.imie.value.trim())) {
+                alert("Pole \"Imię\" ma niewłaściwą postać. Musi mieć co najmniej 3 znaki, mieć pierwszą literę wielką i kolejne małe.");
+                form.imie.focus();
+                return false;
+            } else if (form.nazwisko.value.trim() == "") {
+                alert("Wypełnij pole \"Nazwisko\".");
+                form.nazwisko.focus();
+                return false;
+            } else if (!l_name_regex.test(form.nazwisko.value.trim())) {
+                alert("Pole \"Nazwisko\" ma niewłaściwą postać. Musi mieć co najmniej 3 znaki, mieć pierwszą literę wielką i kolejne małe. Może mieć więcej takich części przedzielonych łącznikami.");
+                form.nazwisko.focus();
+                return false;
+            } else if (form.plec.value.trim() == "") {
+                alert("Wybierz płeć.");
+                form.plec.focus();
+                return false;
+            } else if (form.kraj.value.trim() == "") {
+                alert("Wybierz kraj.");
+                form.kraj.focus();
+                return false;
+            } else if (form.miejscowosc.value.trim() == "") {
+                alert("Wypełnij pole \"Miejscowość\".");
+                form.miejscowosc.focus();
+                return false;
+            } else if (!p_name_regex.test(form.miejscowosc.value.trim())) {
+                alert("Pole \"Miejscowość\" ma niewłaściwą postać. Musi mieć co najmniej 3 znaki, mieć pierwszą literę wielką i kolejne małe. Może mieć więcej takich części przedzielonych spacjami lub łącznikami.");
+                form.miejscowosc.focus();
+                return false;
+            } else if (form.kod_pocztowy.value.trim() == "") {
+                alert("Wypełnij pole \"Kod pocztowy\".");
+                form.kod_pocztowy.focus();
+                return false;
+            } else if (!postcode_regex.test(form.kod_pocztowy.value.trim())) {
+                alert("Pole \"Kod pocztowy\" ma niewłaściwą postać. Musi mieć dwie cyfry, łącznik i trzy cyfry, w tej kolejności.");
+                form.kod_pocztowy.focus();
+                return false;
+            } else if (form.ulica.value.trim() == "") {
+                alert("Wypełnij pole \"Ulica\".");
+                form.ulica.focus();
+                return false;
+            } else if (!p_name_regex.test(form.ulica.value.trim())) {
+                alert("Pole \"Ulica\" ma niewłaściwą postać. Musi mieć co najmniej 3 znaki, mieć pierwszą literę wielką i kolejne małe. Może mieć więcej takich części przedzielonych spacjami lub łącznikami.");
+                form.ulica.focus();
+                return false;
+            } else if (form.nr_bud.value.trim() == "") {
+                alert("Wypełnij pole \"Nr budynku\".");
+                form.nr_bud.focus();
+                return false;
+            } else if (!bldg_num_regex.test(form.nr_bud.value.trim())) {
+                alert("Pole \"Nr budynku\" ma niewłaściwą postać. Musi być liczbą, po której może się znajdować wielka litera, czy ukośnik z numerem mieszkania.");
+                form.nr_bud.focus();
+                return false;
+            } else if (form.email.value.trim() == "") {
+                alert("Wypełnij pole \"Adres e-mail\".");
+                form.email.focus();
+                return false;
+            } else if (!email_regex.test(form.email.value.trim())) {
+                alert("Pole \"Adres e-mail\" ma niewłaściwą postać.");
+                form.email.focus();
+                return false;
+            } else if (form.nr_tel.value.trim() == "") {
+                alert("Wypełnij pole \"Nr telefonu\".");
+                form.email.focus();
+                return false;
+            } else if (!tel_regex.test(form.nr_tel.value.trim())) {
+                alert("Pole \"Nr telefonu\" ma niewłaściwą postać. Musi to być dokładnie 9 cyfr.");
+                form.nr_tel.focus();
+                return false;
+            } else if (![form.m_rock.checked,form.m_hm.checked,form.m_pop.checked,form.m_techno.checked,form.m_mp.checked].some(x => x === true)) {
+                alert("Wybierz co najmniej jeden gatunek muzyczny.");
+                form.m_rock.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Przykładowy formularz</legend>
+        <form onsubmit="return walidacja(this)" method="get"><!-- action="mailto:" -->
+            <ul class="form">
+                <li><label>Imię: <input type="text" id="imie" name="imie"></label></li>
+                <li><label>Nazwisko: <input type="text" id="nazwisko" name="nazwisko"></label></li>
+                <li>Płeć: <label><input type="radio" id="k" name="plec" value="K">K</label> <label><input type="radio" id="m" name="plec" value="M">M</label></li>
+                <li><label>Kraj pochodzenia: <select id="kraj" name="kraj">
+                    <option value="  ">&mdash;&mdash;Wybierz kraj&mdash;&mdash;</option>
+                    <option value="pl">Polska</option>
+                    <option value="de">Niemcy</option>
+                    <option value="cz">Czechy</option>
+                    <option value="sk">Słowacja</option>
+                    <option value="ua">Ukraina</option>
+                </select></label></li>
+                <li><label>Miejscwość: <input type="text" id="miejscowosc" name="miejscowosc"></label></li>
+                <li><label>Kod pocztowy: <input type="text" id="kod_pocztowy" name="kod_pocztowy"></label></li>
+                <li><label>Ulica: <input type="text" id="ulica" name="ulica"></label></li>
+                <li><label>Nr budynku: <input type="text" id="nr_bud" name="nr_bud"></label></li>
+                <li><label>Adres e-mail: <input type="text" id="email" name="email"></label></li>
+                <li><label>Nr telefonu: <input type="text" id="nr_tel" name="nr_tel"></label></li>
+                <li>Jaką lubisz muzykę?</li>
+                <ul class="form">
+                    <li><label><input type="checkbox" name="m_rock" id="m_rock">Rock</label></li>
+                    <li><label><input type="checkbox" name="m_hm" id="m_hm">Heavy Metal</label></li>
+                    <li><label><input type="checkbox" name="m_pop" id="m_pop">Pop</label></li>
+                    <li><label><input type="checkbox" name="m_techno" id="m_techno">Techno</label></li>
+                    <li><label><input type="checkbox" name="m_mp" id="m_mp">Muzyka poważna</label></li>
+                </ul>
+                <li><input type="submit" value="Wyślij"></li>
+            </ul>
+        </form>
+    </fieldset>
+</body>
+</html>

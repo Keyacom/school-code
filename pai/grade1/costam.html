@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		ul.form > li {
+			padding: 2px 0;
+		}
+
+		ul.form {
+			padding: 0;
+			margin: 0 0 0 1.5rem;
+			list-style-type: none;
+		}
+
+		div#patch {
+			display: inline-block;
+			padding: 2px;
+			border:1px solid gray
+		}
+	</style>
+	<script>
+		function oblicz() {
+			let kolor = [document.getElementById("kolorR").value,document.getElementById("kolorG").value,document.getElementById("kolorB").value];
+			let ksztalt = "";
+
+			switch (parseInt(document.getElementById("ksztalt").value)) {
+				case 1:
+					ksztalt="cytryna";
+					break;
+				case 2:
+					ksztalt="liść";
+					break;
+				case 3:
+					ksztalt="banan";
+					break;
+				default:
+					ksztalt="inny";
+			}
+			document.getElementById("kind").innerHTML = ksztalt;
+			document.getElementById("patch").style.backgroundColor = "rgb("+kolor+")"
+		}
+	</script>
+</head>
+<body>
+	<ul class="form">
+		<li>Nr kształtu: <input type="number" id="ksztalt"/></li>
+		<ul class="form">
+			<li>R: <input type="number" id="kolorR" min="0" max="255"/></li>
+			<li>G: <input type="number" id="kolorG" min="0" max="255"/></li>
+			<li>B: <input type="number" id="kolorB" min="0" max="255"/></li>
+		</ul>
+		<li><input type="button" value="Zamówienie" onclick="oblicz()"/></li>
+		<li>Twoje zamówienie to cukierek <span id="kind"></span>. <div id="patch">Kolor</div></li>
+	</ul>
+</body>
+</html>

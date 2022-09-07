@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sformatuj ten tekst</title>
+    <script>
+        function reformat() {
+            let color;
+            if (document.getElementById("czerwony").checked) {
+                color = "red";
+            } else if (document.getElementById("zielony").checked) {
+                color = "lime";
+            } else if (document.getElementById("niebieski").checked) {
+                color = "blue";
+            } else {
+                color = "black";
+            }
+
+            let fontStyle;
+            switch (document.getElementById("styl").value) {
+                case "Normalny":
+                    fontStyle = "normal";
+                    break;
+                case "Kursywa":
+                    fontStyle = "italic";
+                    break;
+            }
+            let fontSize = document.getElementById("procent").value + "%";
+
+            document.getElementById("wynik").style.color = color;
+            document.getElementById("wynik").style.fontStyle = fontStyle;
+            document.getElementById("wynik").style.fontSize = fontSize;
+        }
+    </script>
+    <style>
+        label {
+            display: block;
+            margin: 0.15rem auto 0.15rem 0;
+        }
+
+        .ecv {
+            background-color: #000;
+        }
+
+        .red {color: red;}
+        .green {color: lime;}
+        .blue {color: blue;}
+
+        #wynik {font-weight: bold; background-color: #aaa; padding: 1em; margin: 0;}
+
+        noscript {}
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Ustawienia</legend>
+
+        <noscript>Proszę włączyć obsługę JavaScript w Twojej przeglądarce!</noscript>
+        
+        <label>Rozmiar tekstu: <input id="procent" type="number" value="100"/>%</label>
+        
+        <label>Styl tekstu:
+            <select id="styl">
+                <option>Normalny</option>
+                <option>Kursywa</option>
+            </select>
+        </label>
+
+        Kolor tekstu:
+        <label class="red"><input id="czerwony" name="kolor" type="radio"/>Czerwony</label>
+        <label class="green"><input id="zielony" name="kolor" type="radio"/><span class="ecv">Zielony</span></label>
+        <label class="blue"><input id="niebieski" name="kolor" type="radio"/>Niebieski</label>
+
+        <button onclick="reformat()">Zmień formatowanie</button>
+    </fieldset>
+    <p id="wynik">To jest przykład paragrafu, który może być formatowany przez JavaScript.</p>
+</body>
+</html>

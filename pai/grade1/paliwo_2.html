@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<script>
+		function ilosc_paliwa() {
+			let dystans = document.getElementById("dystans").value;
+			let spalanie = document.getElementById("ile").value;
+			let paliwo = dystans / 100 * spalanie;
+			let paliwoStr = paliwo.toString().replace(".",",");
+			document.getElementById("ilosc_paliwa").innerHTML = "Potrzebujesz zatankować "+paliwoStr+" l paliwa.";
+		}
+	</script>
+	<style>
+		ul.form {list-style-type: none;}
+		ul.form li {margin-left: 0; padding: 5px 0;}
+	</style>
+</head>
+<body>
+	<h2>Oblicz, ile litrów musisz zatankować</h2>
+	<ul class="form">
+		<li>Dystans do przejechania: <input type="number" id="dystans"/> km</li>
+		<li>Spalanie na 100 km: <input type="number" id="ile"/></li>
+		<li><input type="button" value="Oblicz" onclick="ilosc_paliwa()"/></li>
+		<li id="ilosc_paliwa"></li>
+	</ul>
+</body>
+</html>

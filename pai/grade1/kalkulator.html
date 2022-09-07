@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function calc(operation) {
+			let result = 0;
+			let a = parseInt(document.getElementById("l1").value);
+			let b = parseInt(document.getElementById("l2").value);
+			let error = 0;
+			switch (operation) {
+				case "+":
+					result = a+b;
+					break;
+				case "-":
+					result = a-b;
+					break;
+				case "*":
+					result = a*b;
+					break;
+				case "/":
+					if (b == 0) {
+						error = 1;
+					} else {
+						result = a/b;
+					}
+					break;
+				case "^":
+					if (a == 0 && b == 0) {
+						error = 2;
+					} else {
+						result = a**b;
+					}
+					break;
+				default:
+					error = 3;
+			}
+			switch (error) {
+				case 1:
+					result="Nie można dzielić przez 0";
+					break;
+				case 2:
+					result="Nie można podnieść 0 do potęgi 0";
+					break;
+				case 3:
+					result="Błąd niezidentyfikowany";
+					break;
+			}
+			console.log(a+" "+operation+" "+b+" = "+result);
+			document.getElementById("wynik").innerHTML = "Wynik: "+result;
+		}
+	</script>
+	<style>
+		ul.form {list-style-type: none;}
+		ul.form li {margin-left: 0; padding: 5px 0;}
+	</style>
+</head>
+<body>
+	<h3>Proste działania</h3>
+	<ul class="form">
+		<li>Liczba 1: <input type="number" id="l1"/></li>
+		<li>Liczba 2: <input type="number" id="l2"/></li>
+		<li><input type="button" value="+" onclick="calc('+')"/><input type="button" value="-" onclick="calc('-')"/><input type="button" value="*" onclick="calc('*')"/><input type="button" value="/" onclick="calc('/')"/><input type="button" value="^" onclick="calc('^')"/></li>
+		<li id="wynik">Wynik: </li>
+	</ul>
+</body>
+</html>

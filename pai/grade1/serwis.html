@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function calcPrice() {
+			let repairDetails = {
+				imie: document.getElementById("imie").value,
+				nazwisko: document.getElementById("nazwisko").value,
+				email: document.getElementById("email").value,
+				usluga: document.getElementById("usluga").value,
+				uwagi: document.getElementById("uwagi").value,
+				newsletter: document.getElementById("chk").checked,
+				price: 0,
+				priceStr: ""
+			}
+			switch (repairDetails.usluga) {
+				case "Naprawa komputera":
+					repairDetails.price = 210;
+					break;
+				case "Odzyskiwanie danych":
+					repairDetails.price = 90;
+					break;
+				case "Problemy z oprogramowaniem":
+					repairDetails.price = 70;
+					break;
+				case "Konfiguracja sieci LAN":
+					repairDetails.price = 170;
+					break;
+				default:
+					repairDetails.price = 0;
+			}
+			if (repairDetails.newsletter) {
+				repairDetails.price -= repairDetails.price / 20;
+			}
+			repairDetails.email = repairDetails.email.replace("@","[na]");
+			repairDetails.price = parseFloat(repairDetails.price).toFixed(2);
+			repairDetails.priceStr = repairDetails.price.toString().replace(".",",");
+			if (repairDetails.price != 0) {
+				document.getElementById("wycena").innerHTML = "Imię i nazwisko: "+repairDetails.imie+" "+repairDetails.nazwisko+"<br>E-mail: "+repairDetails.email+"<br>Usługa: "+repairDetails.usluga+"<br>Dodatkowe uwagi: "+(!repairDetails.uwagi ? "brak" : repairDetails.uwagi)+"<br>Zapisać się do newslettera: "+(repairDetails.newsletter ? "tak" : "nie")+"<br>Cena: <b>"+repairDetails.priceStr+" zł</b>";
+			} else {
+				document.getElementById("wycena").innerHTML = "Imię i nazwisko: "+repairDetails.imie+" "+repairDetails.nazwisko+"<br>E-mail: "+repairDetails.email+"<br>Usługa: "+repairDetails.usluga+"<br>Dodatkowe uwagi: "+(!repairDetails.uwagi ? "brak" : repairDetails.uwagi)+"<br>Zapisać się do newslettera: "+(repairDetails.newsletter ? "tak" : "nie")+"<br>Cena: <b>wycena indywidualna</b>";
+			}
+		}
+	</script>
+	<style>
+		ul.form {list-style-type: none;}
+		ul.form li {margin-left: 0; padding: 5px 0;}
+	</style>
+</head>
+<body>
+	<h3>Sprawdź cenę swojej wizyty</h3>
+	<ul class="form">
+		<li>Imię: <input type="text" id="imie"/></li>
+		<li>Nazwisko: <input type="text" id="nazwisko"/></li>
+		<li>E-mail: <input type="text" id="email"/></li>
+		<li>Usługa: <select id="usluga">
+			<option>Naprawa komputera</option>
+			<option>Odzyskiwanie danych</option>
+			<option>Problemy z oprogramowaniem</option>
+			<option>Konfiguracja sieci LAN</option>
+			<option>Inna</option>
+		</select></li>
+		<li>Dodatkowe uwagi:</li>
+		<li><textarea id="uwagi" cols="30" rows="10"/></textarea></li>
+		<li><input type="checkbox" id="chk"/> Zapisz się do newslettera (rabat 5%)</li>
+		<li><input type="button" value="Wyceń naprawę" onclick="calcPrice()"/></li>
+		<li id="wycena">Cena: <b>wycena indywidualna</b></li>
+	</ul>
+</body>
+</html>

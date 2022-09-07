@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function calcPrice() {
+			let reservation = {
+				imie: document.getElementById("imie").value,
+				nazwisko: document.getElementById("nazwisko").value,
+				osoby: document.getElementById("osoby").value,
+				wyb1: document.getElementById("wyb1").checked,
+				wyb2: document.getElementById("wyb2").checked,
+				wyb3: document.getElementById("wyb3").checked,
+				wyb4: document.getElementById("wyb4").checked,
+				staly: document.getElementById("staly_klient").checked,
+				cena: 0,
+				cenaStr: ""
+			}
+			if (reservation.wyb1) {
+				reservation.cena = 900;
+			}
+			if (reservation.wyb2) {
+				reservation.cena = 700;
+			}
+			if (reservation.wyb3) {
+				reservation.cena = 200;
+			}
+			if (reservation.wyb4) {
+				reservation.cena = 190;
+			}
+			reservation.cena *= reservation.osoby;
+			if (reservation.staly) {reservation.cena *= 0.95}
+			reservation.cena = parseFloat(reservation.cena).toFixed(2);
+			reservation.cenaStr = reservation.cena.toString().replace(".",",");
+			document.getElementById("cena").innerHTML="Imię i nazwisko: "+reservation.imie+" "+reservation.nazwisko+"<br>Ilość osób: "+reservation.osoby+"<br>Cena rezerwacji: "+reservation.cenaStr+" zł";
+		}
+	</script>
+	<style>
+		ul.form {list-style-type: none;}
+		ul.form li {margin-left: 0; padding: 5px 0;}
+
+		q {
+			display: inline;
+		}
+
+		q::before {
+			content: '„';
+		}
+
+		q::after {
+			content: '”';
+		}
+	</style>
+</head>
+<body>
+	<h3>Witamy w restauracji <q>Wszystkie smaki</q></h3>
+	<ul class="form">
+		<li>Imię: <input type="text" id="imie"/></li>
+		<li>Nazwisko: <input type="text" id="nazwisko"/></li>
+		<li>Liczba osób: <input type="number" id="osoby"/></li>
+		<li><input type="radio" name="posilki" id="wyb1"/> 7 posiłków</li>
+		<li><input type="radio" name="posilki" id="wyb2"/> 5 posiłków</li>
+		<li><input type="radio" name="posilki" id="wyb3"/> 3 posiłki</li>
+		<li><input type="radio" name="posilki" id="wyb4"/> 1 posiłek</li>
+		<li><input type="checkbox" id="staly_klient"/> Jestem stałym klientem</li>
+		<li><input type="button" value="Zarezerwuj stolik" onclick="calcPrice()"/></li>
+		<li id="cena">Cena: NaN zł</li>
+	</ul>
+</body>
+</html>
