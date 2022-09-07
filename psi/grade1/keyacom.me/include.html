@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="skin_0.css">
+    <link rel="icon" href="favicon.ico">
+    <title>Projekt strony | #include</title>
+</head>
+<body>
+    <main>
+            <p>
+        <b>Instrukcja SSI #include</b> (skrót od <i>Server Side Includes</i> - dołączenia po stronie serwera) pozwala na umieszczenie tekstu w dowolnym dokumencie SHTML.
+        </p>
+        <h2>Funkcje</h2>
+        <p>
+        Na dowolnej stronie można umieścić kod <code>&lt;!--#include file="nazwa_pliku.rozszerzenie" --&gt;</code>, gdzie <code>nazwa_pliku.rozszerzenie</code> oznacza nazwę pliku dołączanego na stronę. Jednak to tylko zadziała, jeśli rozszerzenie pliku zawierającego ten kod to <b>.shtml</b> (skrót od <i>Server-Parsed Hypertext Markup Language</i> - hipertekstowy język znaczników przetwarzany na serwerze).
+        </p>
+        <h2>Przykład</h2>
+        <p>
+        Przyjmijmy, że to jest zawartość pliku <code>metas.txt</code>, znajdującego się w tym samym folderze, co strona:</p>
+        <pre>
+&lt;meta charset="utf-8"&gt;
+&lt;meta name="author" content="John Doe"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="generator" content="WYSIWYG Web Editor"&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</pre>
+        <p>Zawartość tego pliku można umieścić w dokumencie HTML w następujący sposób:</p>
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;!--#include file="metas.txt" --&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!--treść strony--&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <h2>Testowanie</h2>
+        <p>
+        Jeżeli nie mamy fizycznego serwera, nadal można testować instrukcje #include przez wirtualny serwer. Na przykład można to zrobić przez XAMPP. Należy umieścić wymagane pliki w folderze <code>htdocs/nazwa</code> i uruchomić stronę <code>localhost/nazwa</code>. Wymagane jest uruchomienie Apache.
+        </p>
+        <h2>Alternatywy</h2>
+        <p>
+        W PHP istnieje instrukcja <code>include 'nazwa_pliku.rozszerzenie'</code>, która robi dokładnie to samo. Jest nieco wolniejsza, ale sam język ma większą funkcjonalność. Wtedy rozszerzenie strony należy zmienić na <b>.php</b>.
+        </p>
+    </main>
+    <script src="script.js"></script>
+    <script src="skin_0.js"></script>
+</body>
+</html>
