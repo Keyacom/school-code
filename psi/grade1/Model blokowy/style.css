@@ -1,0 +1,19 @@
+h1 {
+    border: medium dotted #808000;
+}
+
+h2 {
+    border: 5px outset red;
+    margin: 10px 255px 8px 30px;
+}
+
+p {
+    border: 1px dashed blue;
+    margin: 3px 30px;
+    padding: 0 30px 0 70px;
+}
+
+pre {
+    border: 10px double #808080;
+    padding: 0 5px;
+}

@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+<body onload="alert('test 6')">
+<h1>Canvas</h1>
+<canvas id="linia" width="300" height="200"></canvas>
+<script>
+var c=document.getElementById("linia");
+var ctx=c.getContext("2d");
+ctx.beginPath();
+ctx.moveTo(50,30);
+ctx.lineTo(250,150);
+ctx.strokeStyle="red";
+ctx.stroke();
+</script>
+<canvas id="okrag" width="300" height="150"></canvas>
+<script>
+var d=document.getElementById("okrag");
+var dtx=d.getContext("2d");
+dtx.beginPath();
+dtx.arc(180,80,65,0,10*Math.PI);
+dtx.strokeStyle="blue";
+dtx.stroke();
+</script>
+<canvas id="prostokat" width="300" height="210"></canvas>
+<script>
+var c=document.getElementById("prostokat");
+var ctx=c.getContext("2d");
+ctx.beginPath();
+ctx.rotate(Math.PI / 30);
+ctx.rect(30, 20, 250, 150);
+ctx.fillStyle="gray";
+ctx.fill();
+ctx.lineWidth=5;
+ctx.strokeStyle="red";
+ctx.stroke();
+</script><br>
+<canvas id="gradient" width="300" height="170"></canvas>
+<script>
+var c=document.getElementById("gradient");
+var ctx=c.getContext("2d");
+var gradient = ctx.createLinearGradient(0, 0, 400, 0);
+gradient.addColorStop(0, "yellow");
+gradient.addColorStop(1, "lime");
+ctx.fillStyle = gradient;
+ctx.fillRect(20, 20, 300, 140);
+</script>
+<canvas id="tekst" width="280" height="150"></canvas>
+<script>
+var c=document.getElementById("tekst");
+var ctx=c.getContext("2d");
+ctx.font = "35px Tahoma";
+ctx.shadowColor = "#888";
+ctx.shadowBlur = "15";
+ctx.fillText("Kurs HTML CSS", 10, 50);
+</script>
+<template id="template1">Szablon</template>
+<script>
+var template1 = document.getElementById("template1");
+document.write(template1.innerHTML);
+</script>
+
+<h1>Zdarzenia</h1>
+<h2>Podstawowe</h2>
+<input type="button" value="test 1" onclick="value='element kliknięty'"></input><br>
+<input type="button" value="test 2" onmouseover="value='element wskazany'" onmouseout="value='element niewskazany'"></input><br>
+<input type="text" value="test 3" onfocus="value='element aktywny'" onblur="value='element nieaktywny'"></input><br>
+<input type="text" value="test 4" onkeypress="value='naciśnięto klawisz'"></input><br>
+<input type="text" value="test 5" onchange="value='zmieniono tekst'"></input><br>
+<h2>Zaawansowane</h2>
+<input type="button" value="test 10" ondblclick="value='element kliknięty'"></input><br>
+<input type="button" value="test 11" onmousemove="value='element wskazany'"></input><br>
+</body>
+</html>

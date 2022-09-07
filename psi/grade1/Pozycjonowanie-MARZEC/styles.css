@@ -1,0 +1,84 @@
+* {font-family: 'Franklin Gothic Book', Arial, sans-serif;}
+
+header {
+    color: #221;
+    background-color: rgba(221,221,238,0.8);
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+footer {
+    color: #dde;
+    background-color: #221;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+section {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 70vw;
+    margin: 0 auto;
+    hyphens: auto;
+}
+
+section img {
+    border-right: 5px solid #f44;
+    width: 220px;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0;
+    background-color: #99a;
+}
+
+h1 {margin-top: 0; margin-bottom: 0; padding: 5px;}
+
+section h2, section div.source {
+    grid-column: 1 / span 2;
+    margin: 0;
+}
+
+div.source {
+    font-size: 0.8em;
+}
+
+section p {
+    padding: 0 0 0 15px;
+    margin: 0;
+    background-image: linear-gradient(to right,#f44 15px,transparent);
+}
+
+div.img {
+    background-image: linear-gradient(to right,transparent,#f44 90%);
+    display: flex;
+    align-items: center;
+}
+
+a:has(img) {
+    text-decoration: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+br {
+    content: "";
+    margin: 2em;
+    display: block;
+    font-size: 24%;
+}
+
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: initial;}
+a:active {text-decoration: initial;}
+
+footer a:link {color: #99e;}
+footer a:visited {color: #c9e;}
+footer a:hover {color: #99e;}
+footer a:active {color: #e99;}

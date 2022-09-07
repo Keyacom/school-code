@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+	background-image: linear-gradient(to bottom left, #f71 10%, #1f0 40%, #17f 90%);
+}
+
+header {
+    background-color: goldenrod;
+    text-align: center;
+    color: slategray;
+    padding: 40px;
+}
+
+header h1 {
+    font-size: 3em;
+}
+
+.poem {
+    white-space: pre-line;
+}
+
+section, aside {
+	background-color: rgba(255,255,255,0.64);
+	padding: 16px 80px;
+	margin: 5px 0px;
+	box-sizing: border-box;
+}
+
+section {
+	max-width: calc(99% - max(250px,30%));
+	align-self: stretch;
+}
+
+table.typechart, table.typechart-explain, table.typechart-historical {
+	border-collapse: collapse;
+	background-color: #ddd;
+}
+
+table.typechart-explain th, table.typechart-historical th {
+	background-color: #aaa;
+}
+
+table.typechart, table.typechart-explain tr:not(:first-child) td:first-child, 
+table.typechart-historical td, 
+table.typechart-historical th[class^="t_"], 
+table.typechart-historical tr:not(:first-child) .x0,
+table.typechart-historical tr:not(:first-child) .x1_2,
+table.typechart-historical tr:not(:first-child) .x2 {
+	font-family: "Courier New", Courier, monospace;
+	background-color: #aaa;
+}
+
+table.typechart tr:first-child th:not(:first-child) {
+	writing-mode: vertical-rl;
+	text-align: right;
+}
+
+table.typechart tr:not(:nth-child(-n+2)) th:first-child {
+	text-align: right;
+}
+
+table.typechart tr:not(:nth-child(-n+2)) td:not(:first-child) {
+	padding: 6px;
+	box-sizing: border-box;
+	background-color: #eee;
+	font-weight: bold;
+}
+
+table.typechart tr:not(:nth-child(-n+2)) td:not(:first-child),
+table.typechart-explain tr:not(:first-child) td:first-child,
+table.typechart-historical td {
+	padding: 6px;
+	box-sizing: border-box;
+	background-color: #eee;
+	font-weight: bold;
+}
+
+td.x0 {
+	background-color: #333 !important;
+	color: #ccc;
+}
+
+td.x1_2 {
+	background-color: #c00 !important;
+	color: #ff0;
+}
+
+td.x2 {
+	background-color: #0c0 !important;
+	color: #333;
+}
+
+table.typechart tr:not(:nth-child(-n+2)) td:not(:first-child):hover, 
+table.typechart-explain tr:not(:first-child) td:first-child:hover,
+table.typechart-historical td:hover {
+	background-color: #fff;
+}
+
+td.x0:hover {
+	background-color: #555 !important;
+	color: #ccc;
+}
+
+td.x1_2:hover {
+	background-color: #e00 !important;
+	color: #ff0;
+}
+
+td.x2:hover {
+	background-color: #0e0 !important;
+	color: #555;
+}
+
+th.t_normal {background: #ccc !important;}
+th.t_fight {background: #800 !important; color: white;}
+th.t_flying {background: #88c !important;}
+th.t_poison {background: #808 !important; color: white;}
+th.t_ground {background: #840 !important; color: white;}
+th.t_rock {background: #c84 !important;}
+th.t_bug {background: #8c0 !important;}
+th.t_ghost {background: #408 !important; color: white;}
+th.t_steel {background: #888 !important;}
+th.t_fire {background: #c80 !important;}
+th.t_water {background: #44c !important; color: white;}
+th.t_grass {background: #4c4 !important;}
+th.t_electr {background: #cc0 !important;}
+th.t_psychc {background: #c4c !important;}
+th.t_ice {background: #4cc !important;}
+th.t_dragon {background: #008 !important; color: white;}
+th.t_dark {background: #444 !important; color: white;}
+th.t_fairy {background: #c8c !important;}
+
+a:link {color: red;}
+a:visited {color: orange;}
+a:hover {color: gold;}
+a:active {color: yellow;}
+
+aside {float: right; width: max(250px,30%);}
+
+.tt {border-bottom: 1px dotted black;}
