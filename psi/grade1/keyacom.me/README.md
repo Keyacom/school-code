@@ -1,5 +1,5 @@
 # Keyacom.me
-<img src="https://github.com/Keyacom/pages-from-school/blob/main/psi/keyacom.me/logo.png?raw=true" height="75" width="75">
+<img src="https://github.com/Keyacom/pages-from-school/blob/main/psi/grade1/keyacom.me/logo.png?raw=true" height="75" width="75">
 
 This was a project for a website I'd name **Keyacom.me** that I worked on in April 2022. I kept everything in the same folder.
 
