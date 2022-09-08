@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oblicz cenę</title>
+    <script src="init.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>   
+<aside id="zegar"><noscript>Tu pojawiłby się zegar. Aby go aktywować, włącz obsługę JavaScript w Twojej przeglądarce.</noscript></aside>
+<main>
+    <fieldset>
+        <legend>Oblicz koszt studiowania</legend>
+        <ul class="form">
+            <li>Pokój w akademiku</li>
+            <ul>
+                <li><label><input type="radio" value="0" name="pokoj" id="pokoj0"><span></span>Nie wynajmuję</label></li>
+                <li><label><input type="radio" value="1" name="pokoj" id="pokoj1"><span></span>1-osobowy</label></li>
+                <li><label><input type="radio" value="2" name="pokoj" id="pokoj2"><span></span>2-osobowy</label></li>
+                <li><label><input type="radio" value="3" name="pokoj" id="pokoj3"><span></span>3-osobowy</label></li>
+            </ul>
+            <li>Kierunek</li>
+            <ul>
+                <li><label><input type="radio" value="inf" name="kierunek" id="inf"><span></span>Technik informatyk</label></li>
+                <li><label><input type="radio" value="prg" name="kierunek" id="prg"><span></span>Technik programista</label></li>
+                <li><label><input type="radio" value="log" name="kierunek" id="log"><span></span>Technik logistyk</label></li>
+                <li><label><input type="radio" value="mct" name="kierunek" id="mct"><span></span>Technik mechatronik</label></li>
+                <li><label><input type="radio" value="zug" name="kierunek" id="zug"><span></span>Technik żywienia i usług gastronomicznych</label></li>
+                <li><label><input type="radio" value="hot" name="kierunek" id="hot"><span></span>Technik hotelarstwa</label></li>
+                <li><label><input type="radio" value="ekn" name="kierunek" id="ekn"><span></span>Technik ekonomista</label></li>
+            </ul>
+            <li><label><input type="checkbox" id="stacjonarne"><span></span>Stacjonarne</label></li>
+        </ul>
+        <button onclick="cena()">Oblicz</button><br>
+        Cena studiów: <span id="cena"></span> zł/miesiąc
+    </fieldset>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function cena() {
+        let cena = 0;
+        switch (true) {
+            case !($("#pokoj0").prop("checked") || $("#pokoj1").prop("checked") || $("#pokoj2").prop("checked") || $("#pokoj3").prop("checked")):
+                alert("Nie podano pokoju");
+                $("#pokoj0").focus();
+                return null;
+            case !($("#inf").prop("checked") || $("#prg").prop("checked") || $("#log").prop("checked") || $("#mct").prop("checked") || $("#zug").prop("checked") || $("#hot").prop("checked") || $("#ekn").prop("checked")):
+                alert("Nie podano kierunku");
+                $("#inf").focus();
+                return null;
+        }
+        switch(true) {
+            case $("#inf").prop("checked"):
+            case $("#prg").prop("checked"):
+                cena += 300;
+                break;
+            case $("#log").prop("checked"):
+            case $("#ekn").prop("checked"):
+            case $("#zug").prop("checked"):
+                cena += 340;
+                break;
+            case $("#hot").prop("checked"):
+            case $("#mct").prop("checked"):
+                cena += 400;
+                break;
+            default:
+                cena += 0;
+        }
+        if (!$("#stacjonarne").prop("checked")) cena *= 1.25;
+        switch(true) {
+            case $("#pokoj1").prop("checked"):
+                cena += 700;
+                break;
+            case $("#pokoj2").prop("checked"):
+                cena += 640;
+                break;
+            case $("#pokoj3").prop("checked"):
+                cena += 520;
+                break;
+            default:
+                cena += 0;
+        }
+        $("#cena").text(cena.toFixed(2).replace(".",","));
+        return cena.toFixed(2).replace(".",",");
+    }
+</script>
+<script src="script.js"></script>
+</body>
+</html>
+
