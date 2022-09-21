@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap');
+            * {
+                box-sizing: border-box;
+            }
+            #main {
+                color: #ccc;
+                background-color: black;
+                width: 80ch;
+                font-family: "JetBrains Mono", monospace;
+                height: 24em;
+                margin: auto;
+            }
+            #main .out {
+                animation: slidefromleft 1.2s;
+            }
+            @keyframes slidefromleft {
+                from {
+                    max-width: 0%;
+                }
+                to {
+                    max-width: 100%;
+                }
+            }
+        </style>
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div id="main" data-io-input="Technik programista" data-io-output="- jesteśmy otwarci na nowe wyzwania" data-io-ibefore="$" data-io-obefore="">
+        </div>
+    </body>
+</html>
