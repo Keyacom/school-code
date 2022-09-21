@@ -1,0 +1,13 @@
+{
+  // These will suffice for now, I am very beginner to ESLint.
+  "rules": {
+    "camelcase": "error",
+    "no-unused-vars": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "env": {
+    "es6": true
+  }
+}

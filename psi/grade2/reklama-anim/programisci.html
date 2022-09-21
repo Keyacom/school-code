@@ -7,18 +7,19 @@
             * {
                 box-sizing: border-box;
             }
-            #main {
+            #con {
                 color: #ccc;
                 background-color: black;
                 width: 80ch;
                 font-family: "JetBrains Mono", monospace;
                 height: 24em;
                 margin: auto;
+                white-space: pre-wrap;
             }
             #main .out {
-                animation: slidefromleft 1.2s;
+                animation: showfromleft 1.2s;
             }
-            @keyframes slidefromleft {
+            @keyframes showfromleft {
                 from {
                     max-width: 0%;
                 }
@@ -30,7 +31,6 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <div id="main" data-io-input="Technik programista" data-io-output="- jesteśmy otwarci na nowe wyzwania" data-io-ibefore="$" data-io-obefore="">
-        </div>
+        <div id="con" data-io-input="Technik programista" data-io-output="- jesteśmy otwarci na nowe wyzwania" data-io-ibefore="$" data-io-obefore=""></div>
     </body>
 </html>
