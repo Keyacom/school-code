@@ -1,4 +1,4 @@
-# Reklama_anim
+# Reklama-anim
 
 An animated advertisement of the programming major. My teacher asked us to install Google Web Designer, but something caused the GWD window to be all-white. So I decided to create it with just code.
 

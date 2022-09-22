@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="lib/jquery-3.6.1-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <script src="lib/jqvalidate/validate-1.19.5-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <script src="lib/jqvalidate/validate-1.19.5-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/localization/messages_pl.min.js"></script>
+    <script src="lib/jqvalidate/l10n/messages_pl.min.js"></script>
+    <script>
+    class Field {
+        /**
+         * Class used for creating a form field.
+         * */
+        constructor(o) {
+            this.minLen = o.minLen ?? 0;
+            this.required = o.required ?? false;
+            this.maxLen = o.maxLen ?? 0;
+            this.max = o.max ?? 999;
+            this.min = o.min ?? 0;
+            this.type = o.type?.trim?.().toLowerCase() ?? 'text';
+            this.inputType = o.inputType?.trim?.().toLowerCase() ?? 'text';
+            this.innerName = o.innerName ?? ''
+            this.value = o.value ?? ''
+        }
+        render(d, n = this.innerName) {
+            return `<label for="${n}"><b>${d}</b></label>
+            <div class="field"><${this.inputType === "textarea" ? "textarea" : "input"} id="${n}" name="${n}" value="${this.value}" type="${this.type || this.inputType || 'text'}" class="${this.required ? 'required' : ''} ${this.type !== 'text' ? this.type : ''}" ${this.minLen ? `minlength="${this.minLen}"` : ''} ${this.maxLen ? `maxlength="${this.maxLen}"` : ''} ${this.min ? `min="${this.min}"` : ''} ${this.max ? `max="${this.max}"` : ''}>${this.inputType === "textarea" ? "</textarea>" : ""}</div>`
+        }
+    }
+    const fields = {
+        Imię: new Field({required: true, innerName: 'imie', minLen: 3}),
+        Nazwisko: new Field({required: true, innerName: 'nazw', minLen: 3}),
+        Wiek: new Field({required: true, innerName: 'wiek', type: 'number', min: 13, max: 150}),
+        'Adres e-mail': new Field({required: true, innerName: 'email', type: 'email'}),
+        Adres: new Field({required: true, innerName: 'adres'}),
+        Wykształcenie: new Field({required: true, innerName: 'wykszt'}),
+        'Telefon kom.': new Field({required: true, innerName: 'tel', inputType: 'text', type: 'number', minLen: 9, maxLen: 9}),
+        Wiadomość: new Field({required: true, innerName: 'wiad', inputType: 'textarea'}),
+    }
+    $(()=>{
+        for (fn in fields) {
+            $("#fields").append(fields[fn].render(fn))
+        }
+        $("#formularz").validate({messages: {
+            wiek: "Proszę wpisać wiek poprawnie!"
+        }});
+    });
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, input, textarea, button {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', system-ui, sans-serif;
+        }
+        .error {
+            color: #d00;
+        }
+        :not(label).error {
+            border-color: #d00;
+        }
+        label.error {
+            font-weight: bold;
+            padding-inline: 0.2em;
+        }
+        input {
+            border: 1px solid #888;
+            border-radius: 2px;
+        }
+        fieldset {
+            border: 2px solid #444;
+            border-radius: 5px;
+            min-width: 40vw;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input:not([type="button" i], [type="submit" i], [type="reset" i]), textarea {
+            width: 100%;
+        }
+        .field {
+            display: grid;
+            grid-template: auto auto / auto;
+        }
+    </style>
+    <title>Formularz</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Kontakt</legend>
+        <form id="formularz" method="post">
+            <div id="fields"></div>
+            <input class="submit" type="submit" value="Wyślij">
+            <input type="reset" value="Wyczyść"><br>
+        </form>
+    </fieldset>
+</body>
+</html>
