@@ -1,0 +1,4 @@
+# Libs are included using cdnjs as well, and to prevent duplication, they are
+# ignored by Git.
+lib
+# Images used by Lightbox2 are NOT ignored.
