@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap');
-            * {
-                box-sizing: border-box;
-            }
-            #con {
-                color: #ccc;
-                background-color: black;
-                width: 80ch;
-                font-family: "JetBrains Mono", monospace;
-                height: 24em;
-                margin: auto;
-                white-space: pre-wrap;
-                line-height: 1;
-            }
-            #con .arg {
-                color: #666;
-            }
-            #con .com {
-                color: #ff0;
-            }
-            #con.notready * {
-                content-visibility: hidden;
-            }
-            @supports not (content-visibility: hidden) {
-                #con.notready * {
-                    display: none;
-                }
-            }
-        </style>
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <div id="con" class="notready">
-            <div class="ioIbefore">$ </div>
-            <div class="ioInput"><span class='con'>technik</span> <span class='arg'>-k</span> programista</div>
-            <div class="ioObefore"></div>
-            <div class="ioOutput">- jesteśmy otwarci na nowe wyzwania</div>
-        </div>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      #con {
+        color: #ccc;
+        background-color: black;
+        width: 80ch;
+        font-family: "JetBrains Mono", monospace;
+        height: 24em;
+        margin: auto;
+        white-space: pre-wrap;
+        line-height: 1;
+      }
+      #con .arg {
+        color: #666;
+      }
+      #con .com {
+        color: #ff0;
+      }
+      #con.notready * {
+        content-visibility: hidden;
+      }
+      @supports not (content-visibility: hidden) {
+        #con.notready * {
+          display: none;
+        }
+      }
+    </style>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="con" class="notready" data-stdin="">
+      <div class="ioIbefore">$ </div>
+      <div class="ioInput"><span class="com">technik</span> <span class="arg">-k</span> <span>programista</span></div>
+      <div class="ioObefore"></div>
+      <div class="ioOutput">
+- jesteśmy otwarci na nowe wyzwania
+      </div>
+    </div>
+  </body>
 </html>

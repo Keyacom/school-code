@@ -19,52 +19,63 @@
     io[e] = consoleWindow.querySelector("." + e).innerHTML
   })
 
-  const replacements = new Map(Object.entries({
-    "&lt;": "<",
-    "&gt;": ">",
-    "&amp;": "&" // must be last, so it won't be recursive
-  }))
+  // const replacements = new Map(Object.entries({
+  //   "&lt;": "<",
+  //   "&gt;": ">",
+  //   "&amp;": "&" // must be last, so it won't be recursive
+  // }))
 
-  const unescapeHTML = (text) => {
-    replacements.forEach((v, k) => {
-      text = text.replaceAll(k, v)
-    });
-    return text
-  }
+  // const unescapeHTML = (text) => {
+  //   replacements.forEach((v, k) => {
+  //     text = text.replaceAll(k, v)
+  //   });
+  //   return text
+  // }
 
   const {
     ioInput, ioOutput, ioIbefore, ioObefore
   } = io;
+  
+  const deb = () => console.debug({html: consoleWindow.innerHTML, text: consoleWindow.dataset.stdin})
 
+  consoleWindow.dataset.stdin = ioIbefore;
   consoleWindow.innerHTML = ioIbefore;
   
   consoleWindow.classList.remove("notready")
 
+  // BUG jak są kolory, to tekst bez koloru się nie pojawia
+  
   let inTag = false
   let inEsc = false
-  let strToAdd = ""
   for (ch of ioInput) {
-    if (ch === "<") {
+    if (ch === "<" && !inTag) {
       inTag = true
-      strToAdd += ch
-    } else if (ch === "&") {
+      consoleWindow.dataset.stdin += ch
+      deb()
+      continue
+    } else if (ch === "&" && !inEsc) {
       inEsc = true
-      strToAdd += ch
-    } else if (ch === ">" && inTag) {
-      inTag = false
-      strToAdd += ch
-    } else if (ch === ";" && inEsc) {
-      inEsc = false
-      strToAdd += ch
+      consoleWindow.dataset.stdin += ch
+      deb()
+      continue
     }
-    if (strToAdd) {
+    consoleWindow.dataset.stdin += ch
+    if (consoleWindow.dataset.stdin !== consoleWindow.innerHTML) {
+      if (ch === ">" && inTag) {
+        inTag = false
+      } else if (ch === ";" && inEsc) {
+        inEsc = false
+      }
+      if (inTag || inEsc) {
+        continue
+      }
     }
-    consoleWindow.innerHTML += ch
-    //consoleWindow.innerHTML = unescapeHTML(consoleWindow.innerHTML)
+    consoleWindow.innerHTML = consoleWindow.dataset.stdin
+    deb()
     if (!inTag && !inEsc) {
       await sleep(60)
     }
   }
   await sleep(500)
-  consoleWindow.innerHTML += "\n" + ioObefore + ioOutput;
+  consoleWindow.innerHTML += "\n" + ioObefore + ioOutput + "\n" + ioIbefore;
 })();
