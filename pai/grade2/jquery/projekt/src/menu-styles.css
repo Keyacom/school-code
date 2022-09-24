@@ -1,0 +1,84 @@
+.menu > * {
+  background-color: yellow;
+  border: 2px dashed Red;
+  padding: 20px;
+  text-align: center;
+}
+.menu > * ~ * {
+  border-top-width: 0;
+}
+.menu > [id] + * {
+  display: none;
+  text-align: left;
+  grid-template-columns: auto 1fr;
+  flex-wrap: wrap;
+}
+
+.menu p {
+  padding-inline: 10px;
+}
+
+.pokeball {
+  border-radius: 100%;
+  background: 
+  radial-gradient(circle at center, #fff 9%, #000 9%, #000 10%, #fff 10%, #fff 14%, #000 14%, #000 15%, transparent 15%),
+  linear-gradient(to bottom, #f00 45%, #000 45%, #000 55%, #fff 55%),
+  #f00;
+  transform-origin: 50% 90%;
+  animation: wobble 3s infinite linear;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  transition: scale .5s cubic-bezier(.9, 1, 1, .5), width .5s .5s cubic-bezier(0, 0, 0, 1);
+}
+
+.pokeball ~ :not(p) {
+  height: 0;
+  width: 0;
+  transition: 0.5s .2s cubic-bezier(1, 0, 1, 0);
+}
+/*
+.pokeball ~ .silhouette-mask {
+  mask-border-mode: alpha;
+  background-color: #f88;
+  display: inline-block;
+  position: relative;
+}
+
+.pokeball ~ .silhouette-mask.opened {
+  opacity: 0;
+}*/
+
+.pokeball.clicked {
+  scale: 0 0;
+  width: 0;
+  animation: unset;
+}
+
+.pokeball.clicked ~ :not(p) {
+  height: 150px;
+  width: 150px;
+}
+
+@keyframes wobble {
+  0% {
+      rotate: 30deg;
+      translate: 20px 0px;
+  }
+  25% {
+      rotate: 0deg;
+      translate: 0px 0px;
+  }
+  50% {
+      rotate: -30deg;
+      translate: -20px 0px;
+  }
+  75% {
+      rotate: 0deg;
+      translate: 0px 0px;
+  }
+  100% {
+      rotate: 30deg;
+      translate: 20px 0px;
+  }
+}

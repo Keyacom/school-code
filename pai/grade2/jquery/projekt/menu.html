@@ -13,7 +13,7 @@
             idList.forEach(e => {
                 $(`#${e}`).click(function(evt) {
                     $(`[id]:not(#${e}) + *`).slideUp(500);
-                    $(`#${e} + *`).slideDown({
+                    $(`#${e} + *`).slideToggle({
                         duration: 500,
                         start: function () {
                             this.style.display = "flex"
@@ -29,90 +29,8 @@
             });
         })
     </script>
-    <style>
-        .menu > * {
-            background-color: yellow;
-            border: 2px dashed Red;
-            padding: 20px;
-            text-align: center;
-        }
-        .menu > * ~ * {
-            border-top-width: 0;
-        }
-        .menu > [id] + * {
-            display: none;
-            text-align: left;
-        }
-
-        .menu > p {
-            padding-inline: 10px;
-        }
-
-        .pokeball {
-            border-radius: 100%;
-            background: 
-            radial-gradient(circle at center, #fff 9%, #000 9%, #000 10%, #fff 10%, #fff 14%, #000 14%, #000 15%, transparent 15%),
-            linear-gradient(to bottom, #f00 45%, #000 45%, #000 55%, #fff 55%),
-            #f00;
-            transform-origin: 50% 90%;
-            animation: wobble 3s infinite linear;
-            width: 150px;
-            height: 150px;
-            display: inline-block;
-        }
-
-        .pokeball ~ :not(p) {
-            height: 0;
-            width: 0;
-            transition: 0.5s cubic-bezier(1, 0, 1, 0);
-        }
-/*
-        .pokeball ~ .silhouette-mask {
-            mask-border-mode: alpha;
-            background-color: #f88;
-            display: inline-block;
-            position: relative;
-        }
-
-        .pokeball ~ .silhouette-mask.opened {
-            opacity: 0;
-        }*/
-
-        .pokeball.clicked {
-            height: 0;
-            width: 0;
-            animation: unset;
-        }
-
-        .pokeball.clicked ~ :not(p) {
-            height: 150px;
-            width: 150px;
-        }
-
-        @keyframes wobble {
-            0% {
-                rotate: 30deg;
-                translate: 20px 0px;
-            }
-            25% {
-                rotate: 0deg;
-                translate: 0px 0px;
-            }
-            50% {
-                rotate: -30deg;
-                translate: -20px 0px;
-            }
-            75% {
-                rotate: 0deg;
-                translate: 0px 0px;
-            }
-            100% {
-                rotate: 30deg;
-                translate: 20px 0px;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/menu-styles.css">
+    <link rel="stylesheet" href="src/styles.css">
     <title>jQuery - test 3</title>
 </head>
 <body>
@@ -120,9 +38,12 @@
         <div id="pikachu">Pikachu - maskotka Pokémonów</div>
         <div>
             <div><div class="pokeball"></div>
-            <img src="images/pikachu.webp" loading="lazy" height="150" width="150"><!--<div class="silhouette-mask" data-src="images/pikachu.webp"></div>--></div>
+            <img src="images/pikachu.png" loading="lazy" height="150" width="150"><!--<div class="silhouette-mask" data-src="images/pikachu.png"></div>--></div>
             <p>
                 Ta elektryzująca myszka z umiejętnościami Statyczność i Piorunochron bardzo się przyda w walce, jak ma przy sobie Light Balla!
+            </p>
+            <p>
+                <b>Czy wiedziałeś, że</b>: W wywiadzie z Atsuko Nishida, artystki stojącej za stworzeniem Pikachu, padło stwierdzenie, że Pikachu miał być oparty o daifuku (japoński deser obtoczony w mochi) z uszami? Czarne zakończenia uszu są pozostałością oryginalnego wyglądu.
             </p>
         </div>
         <div id="meowth">Meowth - kotek Zespołu R</div>
