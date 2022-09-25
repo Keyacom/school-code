@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
   <defs>
     <radialGradient id="flameGradient" fx="50%" fy="80%">
-      <stop stop-color="#ff3" offset="10%"></stop>
-      <stop stop-color="#f83" offset="50%"></stop>
-      <stop stop-color="#f33" offset="90%"></stop>
+      <stop stop-color="#ff3c" offset="10%"></stop>
+      <stop stop-color="#f83c" offset="50%"></stop>
+      <stop stop-color="#f33c" offset="90%"></stop>
     </radialGradient>
   </defs>
   <path d="m 26 83 c -7 18 52 26 53 1 c 0 -24 -12 -3 -5 -39 c -6 7 -11 15 -8 35 a 1 1 0 0 1 -3 -2 c 16 -37 -14 -41 -9 -78 c -33 36 -9 99 -15 59 c -7 -15 -5 -28 -6 -19 c -6 27 1 25 -7 43" fill="url('#flameGradient')"/>

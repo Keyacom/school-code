@@ -54,6 +54,10 @@
       scale: 1 1;
     }
 
+    .icebeam, .flamethrower {
+      position: absolute;
+    }
+
     #attack-area {
       aspect-ratio: 4 / 3;
       max-width: 900px;
@@ -98,10 +102,35 @@
         return new Promise(resolve => setTimeout(resolve, ms))
       }
 
-      const throwingAnim = async (path) => {
-        for (let i = 0, i < 25; i++) {
-
+      const throwingAnim = async (path, name) => {
+        let done = 0
+        let {top, left} = mew2.position()
+        left += mew2.innerWidth() / 2
+        top += mew2.innerHeight() / 2
+        for (let i = 0; i < 25; i++) {
+          mew2.before(`<img src="${path}" width="80" height="80" class="${name}" style="left: ${left-40}px; top: ${top-40}px;" data-count="${i}">`)
         }
+        for (;done<25;) {
+          $(`.${name}[data-count="${done++}"]`).animate(
+            {
+              left: mew1.position().left + mew2.innerWidth() / 2,
+              top:  mew1.position().top + mew2.innerHeight() / 2
+            },
+            {
+              duration: 250,
+              //easing: "cubic-bezier(.33, .5, .67, .5)",
+              complete: function () {
+                $(this).animate({opacity: 0}, {
+                  duration: 50,
+                  easing: "linear"
+                })
+              }
+            }
+          )
+          await sleep(25)
+        }
+        await sleep(250)
+        $(`.${name}`).remove()
       }
 
       const anims = {
@@ -115,15 +144,15 @@
           })
 
           for (let i = 0; i < 3; i++) {
-            mew1.before(`<img src="images/thunderbolt.svg" width="300" height="300" class="thunderbolt" style="--left-mod: ${Math.random() * 2 - 1}vw;" data-count="${i}">`)
+            mew2.before(`<img src="images/thunderbolt.svg" width="300" height="300" class="thunderbolt" style="--left-mod: ${Math.random() * 2 - 1}vw;" data-count="${i}">`)
           }
           await sleep(50)
           for (;dropped<3;) {
             $(`.thunderbolt[data-count="${dropped}"]`).addClass("start")
             await sleep(250)
             $(`.thunderbolt[data-count="${dropped++}"]`).animate({opacity: 0}, {
-                duration: 50,
-                easing: "linear"
+              duration: 50,
+              easing: "linear"
             })
             await sleep(50)
           }
@@ -135,8 +164,8 @@
             easing: "linear"
           })
         },
-        icebeam: throwingAnim.bind(this, "images/ice.svg"),
-        flamethrower: throwingAnim.bind(this, "images/flame.svg")
+        icebeam: throwingAnim.bind(this, "images/ice.svg", "icebeam"),
+        flamethrower: throwingAnim.bind(this, "images/flame.svg", "flamethrower")
       }
 
       $("#thunderbolt").click(await anims.thunderbolt)
