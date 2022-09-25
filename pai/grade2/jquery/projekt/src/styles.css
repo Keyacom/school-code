@@ -129,6 +129,14 @@ input:is([type="button" i], [type="submit" i], [type="reset" i]), button {
   color: white;
 }
 
+input:is([type="button" i], [type="submit" i], [type="reset" i]):hover, button:hover {
+  background-color: #73e;
+}
+
+input:is([type="button" i], [type="submit" i], [type="reset" i]):hover:active, button:hover:active {
+  background-color: #62d;
+}
+
 textarea {
   resize: vertical;
 }
