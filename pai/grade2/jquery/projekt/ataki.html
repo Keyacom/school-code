@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="../lib/jquery-3.6.1-min.js"></script>
+  <link rel="stylesheet" href="src/styles.css">
+  <style>
+    html {
+      overflow-y: hidden;
+    }
+
+    button {
+      --color: #ccc;
+      background-image: linear-gradient(to bottom, var(--color), #eee);
+      border-radius: 0.5rem;
+      max-width: 18ch;
+    }
+
+    button:hover {
+      background-image: linear-gradient(to bottom, var(--color), #ddd);
+    }
+
+    button:hover:active {
+      background-image: linear-gradient(to bottom, var(--color), #ccc);
+    }
+
+    #thunderbolt {
+      --color: #cc8;
+    }
+
+    #icebeam {
+      --color: #8cc;
+    }
+
+    #flamethrower {
+      --color: #ca8;
+    }
+
+    .thunderbolt {
+      height: 300px;
+      width: 300px;
+      top: 0;
+      scale: 1 0;
+      right: calc(7vw - var(--left-mod, 0vw));
+      position: absolute;
+      transform-origin: 50% 0;
+      transition: scale .25s linear;
+    }
+
+    .thunderbolt.start {
+      scale: 1 1;
+    }
+
+    #attack-area {
+      aspect-ratio: 4 / 3;
+      max-width: 900px;
+      position: relative;
+      background-image: linear-gradient(150deg, #8bf 45%, #bf8 55%);
+    }
+
+    #overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #888;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #mew1 {
+      right: 7vw;
+      top: 7vh;
+    }
+
+    #mew2 {
+      left: 7vw;
+      bottom: 7vh;
+    }
+
+    .mew {
+      position: absolute;
+      display: inline-block;
+      image-rendering: crisp-edges;
+    }
+  </style>
+  <script>
+    $(async () => {
+      const
+      mew1 = $("#mew1"),
+      mew2 = $("#mew2"),
+      overlay = $("#overlay"),
+      screen = $("#attack-area")
+
+      const sleep = async (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms))
+      }
+
+      const throwingAnim = async (path) => {
+        for (let i = 0, i < 25; i++) {
+
+        }
+      }
+
+      const anims = {
+        thunderbolt: async () => {
+          let dropped = 0
+          overlay.animate({
+            opacity: 0.7
+          }, {
+            duration: 300,
+            easing: "linear"
+          })
+
+          for (let i = 0; i < 3; i++) {
+            mew1.before(`<img src="images/thunderbolt.svg" width="300" height="300" class="thunderbolt" style="--left-mod: ${Math.random() * 2 - 1}vw;" data-count="${i}">`)
+          }
+          await sleep(50)
+          for (;dropped<3;) {
+            $(`.thunderbolt[data-count="${dropped}"]`).addClass("start")
+            await sleep(250)
+            $(`.thunderbolt[data-count="${dropped++}"]`).animate({opacity: 0}, {
+                duration: 50,
+                easing: "linear"
+            })
+            await sleep(50)
+          }
+
+          $(".thunderbolt").remove()
+
+          overlay.animate({opacity: 0}, {
+            duration: 300,
+            easing: "linear"
+          })
+        },
+        icebeam: throwingAnim.bind(this, "images/ice.svg"),
+        flamethrower: throwingAnim.bind(this, "images/flame.svg")
+      }
+
+      $("#thunderbolt").click(await anims.thunderbolt)
+      $("#icebeam").click(await anims.icebeam)
+      $("#flamethrower").click(await anims.flamethrower)
+    })
+  </script>
+  <title>O Pokémonach - /Ataki</title>
+</head>
+<body>
+  <h1>Ataki</h1>
+  <nav class="breadcrumbs">
+    Ścieżka: <a href="menu.html">/</a> <a href="ataki.html">Ataki</a>
+  </nav>
+  <div id="attack-area" data-attack="">
+    <div id="overlay"></div>
+      <img src="images/mew-sprite-front.png" width="288" height="288" class="mew" id="mew1">
+      <img src="images/mew-sprite-back.png" width="288" height="288" class="mew" id="mew2">
+    </div>
+  </div>
+  <button type="button" id="thunderbolt">Thunderbolt (Piorun)</button>
+  <button type="button" id="icebeam">Ice Beam (Lodowy Promień)</button>
+  <button type="button" id="flamethrower">Flamethrower (Miotacz Płomieni)</button>
+  <p>
+    Na potrzeby zadania animacje tutaj są realizowane przez jQuery.
+  </p>
+</body>
+</html>

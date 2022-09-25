@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="../lib/jquery-3.6.1-min.js"></script>
+  <style>
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css);
+    @import url(../lib/lightbox2-2.11.3-min.css);
+
+    .lb-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+
+    .lb-gallery > * {
+      flex: 0 1 15%;
+      pointer-events: none;
+    }
+
+    .lb-gallery > * > img {
+      pointer-events: auto;
+      border-radius: 0.2rem;
+    }
+
+    .lb-gallery > * > img:hover {
+      outline: 0.3em solid #f44;
+    }
+  </style>
+  <link rel="stylesheet" href="src/styles.css">
+  <title>O Pokémonach - /Galeria</title>
+</head>
+<body>
+  <h1>Galeria</h1>
+  <nav class="breadcrumbs">
+    Ścieżka: <a href="menu.html">/</a> <a href="galeria.html">Galeria</a>
+  </nav>
+  <div class="lb-gallery">
+    <a href="images/kadabra.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że w listopadzie 2000 roku Uri Geller, izraelski iluzjonista, pozwał Nintendo o 60 mln funtów szterlingów (ok. 86 mln dolarów) za Kadabrę, która jest jego &quot;nieautoryzowaną parodią&quot;?"><img src="images/kadabra.png" height="200" width="200" alt="Kadabra"></a>
+    <a href="images/lugia.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że pierwszym Pokémonem zaprojektowanym przez Jamesa Turnera, zanim dołączył do Game Freak, była Shadow Lugia? Wtedy pracował dla Genius Sonority (firmy za Pokémon XD) jako Jamie Turner."><img src="images/lugia.png" height="200" width="200" alt="Lugia"></a>
+    <a href="images/flygon.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że Flygon miał prawie mieć Megaewolucję w Pokémon X i Y, ale Ken Sugimori nie mógł dokończyć swojej koncepcji ze względu na brak w niej kreatywności?"><img src="images/flygon.png" height="200" width="200" alt="Flygon"></a>
+    <a href="images/rotom.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że za każdą formą Rotoma stoi inny artysta?"><img src="images/rotom.png" height="200" width="200" alt="Rotom"></a>
+    <a href="images/archen.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że ataki fizyczne, jakie zadaje Archen, są silniejsze od tych, które zadadzą Pokémony takie jak Mewtwo, Necrozma, Jirachi, Victini, Regieleki, czy Cobalion?"><img src="images/archen.png" height="200" width="200" alt="Archen"></a>
+    <a href="images/zygarde.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że dwa z najważniejszych ataków Zygarde, Thousand Arrows i Thousand Waves (oba nie mają oficjalnych polskich tłumaczeń), istniały jeszcze w 6 generacji, ale dopiero były dostępne w 7 generacji?"><img src="images/zygarde.png" height="200" width="200" alt="Archen"></a>
+    <a href="images/cosmoem.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że zmiana statystyk Cosmoema jest najmniej równa ze wszystkich Pokémonów, z odchyleniem standardowym populacji równym 47,07?"><img src="images/cosmoem.png" height="200" width="200" alt="Archen"></a>
+    <a href="images/regieleki.png" data-lightbox="Pokemon" data-title="Czy wiedziałeś, że Regieleki jest najszybszym Pokémonem? Jego bazowa statystyka szybkości, 200, jest większa o 20 punktów od poprzedniego rekordzisty, formy Speed Deoxysa."><img src="images/regieleki.png" height="200" width="200" alt="Archen"></a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" defer class="lb-script"></script>
+  <script src="../lib/lightbox2-2.11.3-min.js" defer class="lb-script"></script>
+  <script>
+    const lbSetAttrs = () => lightbox.option({
+      albumLabel: 'Obraz %1 z %2'
+    });
+    $(".lb-script").on("load", lbSetAttrs)
+  </script>
+</body>
+</html>

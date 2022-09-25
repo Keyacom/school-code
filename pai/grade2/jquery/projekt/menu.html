@@ -1,65 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script>
-        $(() => {
-            let idList = [];
-            $('.menu > [id]').each((_, e) => idList.push(e.id));
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="../lib/jquery-3.6.1-min.js"></script>
+  <script src="../lib/field_class.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+  <script src="../lib/jqvalidate/validate-1.19.5-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/localization/messages_pl.min.js"></script>
+  <script src="../lib/jqvalidate/l10n/messages_pl.min.js"></script>
+  <script>
+  /** Metoda do walidacji za pomocą wyrażeń regularnych.
+   * 
+   * Wśród dodatkowych funkcji w paczce do walidacji jest funkcja `pattern`,
+   * ale wolę jej nie używać, ponieważ jest trochę ograniczona.
+   * 
+   * Z tekstem przetłumaczonym na polski.
+   * 
+   * Method for regex-based validation.
+   * 
+   * Even though there is a `pattern` function among the additional functions,
+   * I prefer to not use it because it's somewhat limited.
+   * 
+   * With text translated to Polish.
+   */
+  $.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+      var re = new RegExp(regexp);
+      return this.optional(element) || re.test(value);
+    },
+    "Proszę sprawdzić wejście."
+  );
 
-            idList.forEach(e => {
-                $(`#${e}`).click(function(evt) {
-                    $(`[id]:not(#${e}) + *`).slideUp(500);
-                    $(`#${e} + *`).slideToggle({
-                        duration: 500,
-                        start: function () {
-                            this.style.display = "flex"
-                        }
-                    });
-                });
-            });
+  class FormEquation {
+    constructor() {
+      const {floor, random} = Math
+      this.arg1 = floor(random() * 8) + 1
+      this.arg2 = floor(random() * 8) + 1
+      this.op = FormEquation.ops[floor(random() * 4)]
+      if (this.op === "-" && this.arg1 < this.arg2) {
+        [this.arg1, this.arg2] = [this.arg2, this.arg1]
+      } else if (this.op === "÷") {
+        this.arg1 *= this.arg2
+      }
+    }
+    static ops = ["+", "-", "×", "÷"]
+    get result() {
+      const {arg1, arg2} = this;
+      switch (this.op) {
+        case "+": return arg1 + arg2
+        case "-": return arg1 - arg2
+        case "×": return arg1 * arg2
+        case "÷": return arg1 / arg2
+        default: throw `Unexpected operator \`${op}\``
+      }
+    }
+    get equation() {
+      return `${this.arg1} ${this.op} ${this.arg2}`;
+    }
+  }
 
-            $(".pokeball ~ .silhouette-mask").each((_, e) => $(e).css("mask-image", `url(${$(e).attr("data-src")})`));
+  const fields = {
+    Imię: new Field({required: true, innerName: 'imie', minLen: 3}),
+    Nazwisko: new Field({required: true, innerName: 'nazw', minLen: 3}),
+    Wiek: new Field({required: true, innerName: 'wiek', inputType: 'number', min: 13, max: 150}),
+    'Adres e-mail': new Field({required: true, innerName: 'email', type: 'email'}),
+    'URL strony w tej witrynie, której kontakt dotyczy': new Field({innerName: 'tytul'}),
+    'Temat wiadomości': new Field({required: true, innerName: 'temat'}),
+    'Treść wiadomości': new Field({required: true, innerName: 'wiad', inputType: 'textarea'}),
+    'Wyrażam zgodę na przetwarzanie danych osobowych': new Field({required: true, innerName: 'do', inputType: 'checkbox'}),
+    _Obliczenie: new Field({required: true, innerName: '_obl', type: 'number'})
+  }
+  const eq = new FormEquation();
+  $(() => {
+    let idList = [];
+    $('.menu > [id]').each((_, e) => idList.push(e.id));
 
-            $(".pokeball").click(function(e) {
-                this.classList.add("clicked")
-            });
-        })
-    </script>
-    <link rel="stylesheet" href="src/menu-styles.css">
-    <link rel="stylesheet" href="src/styles.css">
-    <title>jQuery - test 3</title>
+    idList.forEach(e => {
+      $(`#${e}`).click(function(evt) {
+        $(`[id]:not(#${e}) + *`).slideUp(500);
+        $(`#${e} + *`).slideToggle({
+          duration: 500,
+        });
+      });
+    });
+
+    $(".pokeball").click(function(e) {
+      this.classList.add("clicked")
+    });
+
+    for (fn in fields) {
+      if (fn !== "_Obliczenie" && fields[fn] instanceof Field) {
+        $("#fields").append(fields[fn].render(fn))
+      } else {
+        $("#fields").append(fields._Obliczenie.render(eq.equation + " ="))
+      }
+    }
+    $("#formularz").validate({messages: {
+      wiek: "Proszę wpisać wiek poprawnie!",
+      _obl: "Nieprawidłowy wynik"
+    }, rules: {
+      imie: {
+        regex: /^\p{Lu}\p{Ll}{2,}$/u
+      },
+      nazwisko: {
+        regex: /^\p{Lu}\p{Ll}{2,}(?:-\p{Lu}\p{Ll}{2,})?$/u
+      },
+      _obl: {
+        regex: eq.result
+      }
+    }});
+  })
+  </script>
+  <link rel="stylesheet" href="src/menu-styles.css">
+  <link rel="stylesheet" href="src/styles.css">
+  <title>O Pokémonach - /</title>
 </head>
 <body>
-    <nav class="menu">
-        <div id="pikachu">Pikachu - maskotka Pokémonów</div>
-        <div>
-            <div><div class="pokeball"></div>
-            <img src="images/pikachu.png" loading="lazy" height="150" width="150"><!--<div class="silhouette-mask" data-src="images/pikachu.png"></div>--></div>
-            <p>
-                Ta elektryzująca myszka z umiejętnościami Statyczność i Piorunochron bardzo się przyda w walce, jak ma przy sobie Light Balla!
-            </p>
-            <p>
-                <b>Czy wiedziałeś, że</b>: W wywiadzie z Atsuko Nishida, artystki stojącej za stworzeniem Pikachu, padło stwierdzenie, że Pikachu miał być oparty o daifuku (japoński deser obtoczony w mochi) z uszami? Czarne zakończenia uszu są pozostałością oryginalnego wyglądu.
-            </p>
-        </div>
-        <div id="meowth">Meowth - kotek Zespołu R</div>
-        <div>Firma zajmuje się...</div>
-        <div id="mudkip">Mudkip - bardzo znany z mema</div>
-        <div>Galeria zdjęć...</div>
-        <div id="lucario">Lucario - umie manipulować aurą</div>
-        <div>Dane kontaktowe...</div>
-        <div id="toxtricity-a">Toxtricity Amped - mój ulubiony!</div>
-        <div>Login i hasło...</div>
-        <div id="galeria">Galeria</div>
-        <div>Galeria zdjęć...</div>
-        <div id="kontakt">Kontakt</div>
-        <div>Dane kontaktowe...</div>
-        <div id="logowanie">Logowanie</div>
-        <div>Login i hasło...</div>
-    </nav>
+  <h1>
+    Menu główne
+  </h1>
+  <nav class="breadcrumbs">
+    Ścieżka: <a href="menu.html">/</a>
+  </nav>
+  <nav class="menu">
+    <div id="pikachu">Pikachu - maskotka Pokémonów</div>
+    <div>
+      <div class="pokeball-wrapper"><div class="pokeball"></div>
+      <img src="images/pikachu.png" loading="lazy" height="150" width="150"></div>
+      <p>
+        Ta elektryzująca myszka z umiejętnościami Statyczność i Piorunochron bardzo się przyda w walce, jak ma przy sobie Light Balla!
+      </p>
+      <p>
+        Pikachu słynie z tego, że ma go Ash, główna postać z anime. Porwanie go na zawsze jest największym celem Zespołu R, ale przyjaciele Asha nigdy nie dają Zespołowi R szans. Jego głos w anime i grze Pokémon Yellow podkładała Ikue Ohtani.
+      </p>
+      <p>
+        <b>Czy wiedziałeś, że</b> w wywiadzie z Atsuko Nishida, artystki stojącej za stworzeniem Pikachu, padło stwierdzenie, że Pikachu miał być oparty o daifuku (japoński deser obtoczony w mochi) z uszami? Czarne zakończenia uszu są pozostałością oryginalnego wyglądu.
+      </p>
+    </div>
+    <div id="meowth">Meowth - kotek Zespołu R</div>
+    <div>
+      <div class="pokeball-wrapper"><div class="pokeball"></div>
+      <img src="images/meowth.png" loading="lazy" height="150" width="150"></div>
+      <p>
+        Ten kot, przyciągany przez okrągłe, złote przedmioty, i często walczy o nie z Murkrowem. Tak jak japoński <i>maneki-neko</i>, przynosi szczęście. Kolor jego sierści sprawia, że Meowth (<abbr title="wymawiaj">wym.</abbr> Miau) najbardziej przypomina kota syjamskiego.
+      </p>
+      <p>
+        Meowth Zespołu R sam nauczył się mówić w ludzkim języku, ale przez to zapomniał, jak używać Dnia Zapłaty.
+      </p>
+      <p>
+        <b>Czy wiedziałeś, że</b> moneta na głowie Meowtha nazywa się <i>koban</i>?
+      </p>
+    </div>
+    <div id="mudkip">Mudkip - bardzo znany z mema</div>
+    <div>
+      <div class="pokeball-wrapper"><div class="pokeball"></div>
+      <img src="images/mudkip.png" loading="lazy" height="150" width="150"></div>
+      <p>
+        Ten mały aksolotl stał się centrum śmiechu przez mema <q>I herd u liek mudkipz?</q>, który się stał popularny przez opowiadanie opublikowane na 4chan, w którym autor napisał o próbie stosunku pluszaka przedstawiającego Mudkipa z niepełnosprawnym psychicznie kolegą z klasy autora.
+      </p>
+      <p>
+        Za pomocą tego Pokémona można przejść przez całą grę Pokémon Ruby, Sapphire, Emerald, Omega Ruby lub Alpha Sapphire, już bez wymagania innych Pokémonów.
+      </p>
+      <p>
+        <b>Czy wiedziałeś, że</b> na Prima Aprilis 2008 zdjęcia profilowe wszystkich użytkowników DeviantArt zostały zmienione na <a href="https://archives.bulbagarden.net/wiki/File:4-1-08_deviantART.png">przedstawiające Mudkipa</a>?
+      </p>
+    </div>
+    <div id="lucario">Lucario - umie manipulować aurą</div>
+    <div>
+      <div class="pokeball-wrapper"><div class="pokeball"></div>
+      <img src="images/lucario.png" loading="lazy" height="150" width="150"></div>
+      <p>
+        Lucario to Pokémon, który w walce równie dobrze używa zarówno ataków fizycznych, jak i specjalnych. Jest ewolucją Riolu, w którą się zmienia przez przyjaźń ze swoim trenerem w ciągu dnia.
+      </p>
+      <p>
+        Inspiracja dla Lucario pochodzi ze starożytnego Egiptu. W egipskiej mitologii występował Anubis, bóg śmierci, który miał głowę szakala. Jego rolą był sąd serc dusz zmarłych, stąd Lucario może <q>widzieć</q> aurę. Do tego boks najprawdopodobniej wywodzi się z Egiptu.
+      </p>
+      <p>
+        <b>Czy wiedziałeś, że</b> aura to właściwie nazwa mocy, której posiada Lucario, i po raz pierwszy została nazwana przez <abbr title="profesora">prof.</abbr> Laventona?
+      </p>
+    </div>
+    <div id="toxtricity-a">Toxtricity Amped - mój ulubiony!</div>
+      <div><div class="pokeball-wrapper"><div class="pokeball"></div>
+      <img src="images/toxtricity-amped.png" loading="lazy" height="150" width="150"></div>
+      <p>
+        Ta jaszczurka najlepiej wie, jak grać na gitarze jak członek zespołu punk rockowego! Dopełnione przez widoczną energię elektryczną jak irokez na głowie, paski przypominające podarte spodnie, i kolce wokół nadgarstków i talii!
+      </p>
+      <p>
+        W chwili debiutu był to jedyny Pokémon, który jednocześnie był typu elektrycznego i trującego, razem z jego formą dziecięcą (Toxel), i formą Gigantamax.
+      </p>
+      <p>
+        <b>Czy wiedziałeś, że</b> forma Gigantamax tego Pokémona została zdradzona na plakacie w biurze Game Freak w grach Pokémon Sun i Moon?
+      </p>
+    </div>
+  </nav>
+  <nav>
+    Podstrony:
+    <menu>
+      <li>
+        <a href="galeria.html">Galeria</a>
+      </li>
+    </menu>
+  </nav>
+  <h2>Formularz kontaktowy</h2>
+  <fieldset>
+    <legend>Kontakt</legend>
+    <form id="formularz" method="post">
+        <div id="fields"></div>
+        <input class="submit" type="submit" value="Wyślij">
+        <input type="reset" value="Wyczyść"><br>
+    </form>
+</fieldset>
 </body>
 </html>
