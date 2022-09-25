@@ -1,6 +1,8 @@
 # Libs are included using cdnjs as well, and to prevent duplication, they are
 # ignored by Git.
-lib
+lib/*
+# Do not ignore field_class.js (local script for defining the Field class)
+!lib/field_class.js
 # Images used by Lightbox2 are NOT ignored.
 
 projekt/instrukcja.jpg
