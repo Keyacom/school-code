@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # For a screenshot.
 def sieve(stop):
     """

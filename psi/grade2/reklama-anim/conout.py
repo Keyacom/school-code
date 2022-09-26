@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 BG_D_RED = "\x1b[41m"
 FG_L_YEL = "\x1b[93m"
 FG_L_BLK = "\x1b[90m"
