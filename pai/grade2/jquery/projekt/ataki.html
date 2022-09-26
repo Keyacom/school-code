@@ -8,10 +8,6 @@
   <script src="../lib/jquery-3.6.1-min.js"></script>
   <link rel="stylesheet" href="src/styles.css">
   <style>
-    html {
-      overflow-y: hidden;
-    }
-
     button {
       --color: #ccc;
       background-image: linear-gradient(to bottom, var(--color), #eee);
@@ -88,6 +84,8 @@
     .mew {
       position: absolute;
       display: inline-block;
+      image-rendering: pixelated;
+      /*image-rendering: -webkit-optimize-contrast;*/
       image-rendering: crisp-edges;
     }
   </style>
@@ -181,7 +179,7 @@
   <nav class="breadcrumbs">
     Ścieżka: <a href="menu.html">/</a> <a href="ataki.html">Ataki</a>
   </nav>
-  <div id="attack-area" data-attack="">
+  <div id="attack-area">
     <div id="overlay"></div>
       <img src="images/mew-sprite-front.png" width="288" height="288" class="mew" id="mew1">
       <img src="images/mew-sprite-back.png" width="288" height="288" class="mew" id="mew2">

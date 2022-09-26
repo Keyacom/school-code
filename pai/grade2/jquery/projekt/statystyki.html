@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="../lib/jquery-3.6.1-min.js"></script>
+  <link rel="stylesheet" href="src/styles.css">
+  <style>
+    section {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      grid-template-rows: repeat(7, 1fr);
+      margin-block-end: 1em;
+    }
+
+    section > img {
+      grid-row: 1 / span 6;
+      max-width: 100%;
+    }
+
+    section .hp {
+      background-color: #f00;
+    }
+    section .atk {
+      background-color: #f92;
+    }
+    section .def {
+      background-color: #ff3;
+    }
+    section .spe {
+      background-color: #f29;
+    }
+    section .spa {
+      background-color: #08f;
+    }
+    section .spd {
+      background-color: #2d4;
+    }
+    section .hp.bar {
+      --col: #f00a;
+    }
+    section .atk.bar {
+      --col: #f92a;
+    }
+    section .def.bar {
+      --col: #ff3a;
+    }
+    section .spe.bar {
+      --col: #f29a;
+    }
+    section .spa.bar {
+      --col: #08fa;
+    }
+    section .spd.bar {
+      --col: #2d4a;
+    }
+    section .bar {
+      background-color: #0000;
+      background-size: 200% 100%;
+      background-image: linear-gradient(to right, var(--col, #8888) 50%, #0000 50%);
+    }
+    section .hidden {
+      color: #0000;
+    }
+    section .name {
+      grid-column: 1 / span 2;
+      font-weight: bold;
+    }
+    section .ruler {
+      background-image: repeating-linear-gradient(to right, #000 0%, #fff calc(100% / 17));
+    }
+
+    section > :not(img) {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      transition: .5s;
+      background-position: var(--move, 100%) 0;
+    }
+  </style>
+  <script>
+    $(() => {
+      $(".bar").hover(function () {
+        this.classList.toggle("hidden")
+        const stat = Number.parseInt(this.innerHTML)
+
+        $({stat: 0}).animate({stat}, {
+          duration: 500,
+          step: (n) => {
+            $(this).css({"--move": `${100 - 100 * (n / 255)}%`})
+          }
+        })
+      },
+      function () {
+        this.classList.toggle("hidden")
+        const stat = Number.parseInt(this.innerHTML)
+
+        $({stat}).animate({stat: 0}, {
+          duration: 500,
+          step: (n) => {
+            $(this).css({"--move": `${100 - 100 * (n / 255)}%`})
+          },
+          easing: 'linear'
+        })
+      })
+    })
+  </script>
+  <title>O Pokémonach - /Ataki</title>
+</head>
+<body>
+  <h1>Ataki</h1>
+  <nav class="breadcrumbs">
+    Ścieżka: <a href="menu.html">/</a> <a href="statystyki.html">Statystyki</a>
+  </nav>
+  <section>
+    <img src="images/kadabra.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">40</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">35</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">30</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">100</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">120</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">70</div>
+    <div class="name">Kadabra</div>
+    <div class="ruler"></div>
+  </section>
+  <section>
+    <img src="images/lugia.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">106</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">90</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">130</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">110</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">90</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">154</div>
+    <div class="name">Lugia</div>
+    <div class="ruler"></div>
+  </section>
+  <section>
+    <img src="images/flygon.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">80</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">100</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">80</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">100</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">80</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">80</div>
+    <div class="name">Flygon</div>
+    <div class="ruler"></div>
+  </section>
+  <section>
+    <img src="images/rotom.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">50</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">50</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">77</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">91</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">95</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">77</div>
+    <div class="name">Rotom (forma zwykła)</div>
+    <div class="ruler"></div>
+  </section>
+  <section>
+    <img src="images/archen.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">55</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">112</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">45</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">70</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">74</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">45</div>
+    <div class="name">Archen</div>
+    <div class="ruler"></div>
+  </section>
+  <section>
+    <img src="images/zygarde.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">108</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">100</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">121</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">95</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">81</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">95</div>
+    <div class="name">Zygarde (forma 50%)</div>
+    <div class="ruler"></div>
+  </section>
+  <section>
+    <img src="images/cosmoem.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">43</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">29</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">131</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">37</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">29</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">131</div>
+    <div class="name">Cosmoem</div>
+    <div class="ruler"></div>
+  </section>
+  <section>
+    <img src="images/regieleki.png" width="244" height="244">
+    <div class="hp">HP</div>
+    <div class="hp bar hidden">80</div>
+    <div class="atk">Atak</div>
+    <div class="atk bar hidden">100</div>
+    <div class="def">Obrona</div>
+    <div class="def bar hidden">50</div>
+    <div class="spe">Szybkość</div>
+    <div class="spe bar hidden">200</div>
+    <div class="spa">Atak sp.</div>
+    <div class="spa bar hidden">100</div>
+    <div class="spd">Obr. sp.</div>
+    <div class="spd bar hidden">50</div>
+    <div class="name">Regieleki</div>
+    <div class="ruler"></div>
+  </section>
+</body>
+</html>
