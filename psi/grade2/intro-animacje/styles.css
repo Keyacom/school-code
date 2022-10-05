@@ -1,0 +1,114 @@
+html {
+    font-size: 16px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#transform .box1 {
+    padding: 10px;
+    margin: 10px 0 0 20px;
+    width: 95px;
+    height: 95px;
+    background-color: #00ff23;
+}
+#transform .box2 {
+    padding: 10px;
+    margin: -100px 0 20px 20px;
+    width: 95px;
+    height: 95px;
+    background-color: #f10023;
+}
+#transform .box2 {
+    transform: rotate(45deg);
+    transform: skew(15deg, 10deg);
+    transform: perspective(150px) rotateY(-40deg);
+    transform: scale(0.5, 0.5);
+    transform: matrix(.2, .5, -.5, .2, 30, 40);
+}
+.container::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+#transition .box {
+    padding: 10px;
+    margin: 10px 0 0 20px;
+    width: 95px;
+    height: 95px;
+    background-color: DodgerBlue;
+    transition-property: width, background-color;
+    transition-duration: 5s;
+    transition-delay: 2s;
+}
+#transition .box:hover {
+    width: 150px;
+    background-color: Silver;
+}
+
+#myani .box {
+    margin: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 75px;
+    width: 270px;
+    background-color: #66f;
+    color: #ff6;
+    transform: none;
+    transition: background-color .5s,
+                color 5s cubic-bezier(0, .5, .5, 0),
+                width 2s linear,
+                height .1s ease-in 3s,
+                transform 3s cubic-bezier(1, .6, 0, 1.2)
+}
+#myani .box.ani {
+    height: 275px;
+    width: 80px;
+    transform: rotate(-90deg);
+    background-color: #f0f;
+    color: #0f0;
+}
+
+#animation .box {
+    padding: 15px;
+    margin: 10px 0 0 20px;
+    width: 95px;
+    height: 95px;
+    animation: animacja 5s ease 1s infinite alternate none;
+    background-color: dodgerblue;
+    transform-origin: 50% 0%;
+    border: 2px solid #992;
+}
+
+#animation .box:hover {
+    animation-play-state: paused;
+}
+
+@keyframes animacja {
+    0% { margin-left: 0; background-color: dodgerblue; transform: rotate(1turn); border-radius: 0 0 0 0; border-width: 2px; transform-origin: 50% 0%; }
+    25% { margin-left: 5%; background-color: crimson; transform: rotate(0.95turn); border-radius: 30% 0 0 0; border-width: 4px; transform-origin: 50% 25%; }
+    50% { margin-left: 15%; background-color: darkorange; transform: rotate(0.85turn); border-radius: 30% 30% 0 0; border-width: 8px; transform-origin: 50% 50%; }
+    75% { margin-left: 30%; background-color: limegreen; transform: rotate(0.7turn); border-radius: 30% 30% 30% 0; border-width: 16px; transform-origin: 50% 75%; }
+    100% { margin-left: 60%; background-color: darkgreen; transform: rotate(0.4turn); border-radius: 30% 30% 30% 30%; border-width: 32px; transform-origin: 50% 100%; }
+}
+
+#animation2 .box {
+    animation-name: moja-animacja-1, moja-animacja-2;
+    animation-duration: 10s, 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    text-align: center;
+    width: 160px;
+    padding: 0.5em;
+    font-size: 1.3em;
+    background-color: #7DCDE8;
+}
+
+@keyframes moja-animacja-1 {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(300px);}
+}
+
+@keyframes moja-animacja-2 {
+    0% {background-color: red;}
+    50% {background-color: orange;}
+    100% {background-color: pink;}
+}
