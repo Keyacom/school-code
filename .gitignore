@@ -7,7 +7,7 @@ desktop.ini
 .DS_Store
 
 # VSCode files, except for configuration
-.vscode/
+.vscode/*
 !.vscode/*.json
 
 # Temp
