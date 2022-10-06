@@ -7,3 +7,7 @@ Credit to Pokémon artworks goes to [Ken Sugimori](https://twitter.com/SUPER_32X
 SVG paths created with [Yqnn's generator](https://yqnn.github.io/svg-path-editor/).
 
 After this project, we'll start learning about PHP.
+
+## Issues
+
+- On the page `menu.html`, the form buttons sometimes disappear.
