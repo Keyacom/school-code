@@ -3,57 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Reklama kierunku programisty</title>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-      * {
-        box-sizing: border-box;
-      }
-      #con {
-        --line-height: 1.35;
-        color: #ccc;
-        background-color: black;
-        width: 80ch;
-        font-family: "JetBrains Mono", monospace;
-        height: calc(var(--line-height, 1.2) * 24em);
-        margin: auto;
-        white-space: pre-wrap;
-        font-size: 10pt;
-        line-height: var(--line-height);
-      }
-      #con .arg {
-        color: #666;
-      }
-      #con .com {
-        color: #ff0;
-      }
-      #con .hl {
-        color: #0ff;
-      }
-      #con .bghl {
-        background-color: #f00;
-      }
-      #con a {
-        color: inherit;
-      }
-      #con a:not(:hover, :active) {
-        text-decoration: none;
-      }
-      #con b {
-        font-weight: normal;
-        color: #fff;
-      }
-      #con::selection, #con ::selection {
-        background-color: #fff8;
-      }
-      #con.notready * {
-        content-visibility: hidden;
-      }
-      @supports not (content-visibility: hidden) {
-        #con.notready * {
-          display: none;
-        }
-      }
-    </style>
+    <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
   </head>
   <body>
