@@ -1,0 +1,114 @@
+#anim {
+    aspect-ratio: 1000 / 720;
+    max-width: 1000px;
+    background-image: linear-gradient(to bottom, #eeeeff, #ccffff 70%, #22ff22 70%, #225522);
+    position: relative;
+    --czas: 3s;
+}
+
+.ksztalt {
+    position: absolute;
+}
+
+#owal {
+    bottom: 30%;
+    animation: owal-roluj var(--czas) infinite linear;
+    transform-origin: 50% 100%;
+}
+
+@keyframes owal-roluj {
+    0% {
+        left: 0%;
+        rotate: 0turn;
+        translate: 0 0;
+        transform-origin: 50% 100%;
+    }
+    25% {
+        left: 15%;
+        rotate: 0.25turn;
+        translate: 0 50px;
+        transform-origin: 100% 50%;
+    }
+    50% {
+        left: 30%;
+        rotate: 0.5turn;
+        translate: 0 -20px;
+        transform-origin: 50% 0%;
+    }
+    75% {
+        left: 45%;
+        rotate: 0.75turn;
+        transform-origin: 0% 50%;
+    }
+    85% {
+        translate: 0 -200px;
+    }
+    100% {
+        left: 60%;
+        rotate: 1turn;
+        translate: 0 0;
+        transform-origin: 50% 100%;
+    }
+}
+
+#trojkat {
+    bottom: 30%;
+    left: 33.9%;
+    animation: trojkat-skacz var(--czas) infinite cubic-bezier(0, 1, 1, .8);
+}
+
+@keyframes trojkat-skacz {
+    59.9% {
+        translate: 0 0px;
+    }
+    90% {
+        translate: 0 -100px;
+    }
+}
+
+#rownoleglobok {
+    right: 18%;
+    top: 30%;
+    animation: rownolegl-pchnij var(--czas) infinite cubic-bezier(0, 1, 0, 1);
+}
+
+@keyframes rownolegl-pchnij {
+    80% {
+        translate: -30% 0;
+    }
+}
+
+#trapez {
+    right: 18%;
+    bottom: 30%;
+    animation: trapez-zmniejsz var(--czas) infinite cubic-bezier(.68,.23,.2,1.01);
+    transform-origin: 50% 100%;
+}
+
+@keyframes trapez-zmniejsz {
+    90% {
+        scale: 1 1;
+    }
+    90% {
+        scale: 1 0.83;
+    }
+}
+
+#prostokat {
+    right: 18%;
+    top: 44.1%;
+    animation: prostokat-zwieksz var(--czas) infinite cubic-bezier(.68,.23,.2,1.01);
+    transform-origin: 50% 0%;
+}
+
+@keyframes prostokat-zwieksz {
+    0% {
+        scale: 1 0.83;
+    }
+    90% {
+        scale: 1 1;
+    }
+    100% {
+        scale: 1 0.83;
+    }
+}
