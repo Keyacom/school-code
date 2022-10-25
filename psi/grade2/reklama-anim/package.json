@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "ansi-to-html": "^0.7.2",
-    "eslint": "^8.23.1",
-    "prettier": "^2.7.1"
-  }
-}
