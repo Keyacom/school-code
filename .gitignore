@@ -1,9 +1,13 @@
 # Ignore Node dependencies
-**/node_modules
-node_modules
+node_modules/
 
-# System files to ignore
+## System files to ignore
+# Windows
 desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# MacOS
 .DS_Store
 
 # VSCode files, except for configuration
