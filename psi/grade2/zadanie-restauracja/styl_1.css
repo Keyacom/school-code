@@ -1,0 +1,46 @@
+html {
+    background-color: #F6E5DC;
+    font-family: 'Verdana', sans-serif;
+}
+
+header {
+    background-color: #2F180C;
+    text-align: center;
+    color: khaki;
+    height: 60px;
+}
+
+footer {
+    background-color: #2F180C;
+    color: khaki;
+    height: 60px;
+}
+
+section.lewo {
+    width: 60%;
+    float: left;
+}
+
+section.prawo {
+    font-size: 150%;
+    padding: 70px;
+    float: left;
+}
+
+section.dol {
+    clear: both;
+    text-align: center;
+    background-color: #D0B6A8;
+    padding: 30px;
+}
+
+button {
+    margin: 10px;
+    padding: 5px;
+    background-color: #2F180C;
+    color: khaki;
+}
+
+img[alt="Nasze danie"] {
+    height: 350px;
+}

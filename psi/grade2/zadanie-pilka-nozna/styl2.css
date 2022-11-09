@@ -1,0 +1,69 @@
+header {
+    color: white;
+    text-align: center;
+    height: 330px;
+}
+
+.druzyna {
+    color: white;
+    text-align: center;
+    width: 170px;
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 15px;
+}
+
+.druzyna:hover {
+    background-color: white;
+    color: black;
+}
+
+.blok-glowny {
+    color: white;
+}
+
+.lewo {
+    background-color: WhiteSmoke;
+    width: 30%;
+    text-align: center;
+    height: 150px;
+}
+
+.prawo {
+    background-color: WhiteSmoke;
+    width: 70%;
+    height: 150px;
+}
+
+body {
+    font-family: Verdana;
+    background-color: SeaGreen;
+}
+
+h3 {
+    text-align: center;
+    letter-spacing: 6px;
+    text-transform: capitalize;
+}
+
+/* Style dodatkowe */
+
+.lewo, .prawo {
+    float: left;
+}
+
+.druzyna {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    aspect-ratio: 1/1;
+    justify-content: space-evenly;
+}
+
+.druzyna .skrot, .druzyna .numer {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.druzyna .numer {
+    font-size: 1.8em;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styl_1.css">
+    <script src="walidacja.js" defer></script>
+    <title>Restauracja Wszystkie Smaki</title>
+</head>
+<body>
+    <header>
+        <h1>
+            Witamy w restauracji "Wszystkie Smaki"
+        </h1>
+    </header>
+    <section class="lewo">
+        <img src="menu.jpg" alt="Nasze danie">
+    </section>
+    <section class="prawo">
+        <h4>U nas dobrze zjesz!</h4>
+        <ol>
+            <li>Obiady od 40 zł</li>
+            <li>Przekąski od 10 zł</li>
+            <li>Kolacje od 20 zł</li>
+        </ol>
+    </section>
+    <section class="dol">
+        <h2>Zarezerwuj stolik on-line</h2>
+        <form id="rezerwacja" method="post">
+            <label for="data">Data (format rrrr-mm-dd):</label><br>
+            <input id="data" type="text"><br>
+            <label for="osoby">Ile osób?:</label><br>
+            <input id="osoby" type="number"><br>
+            <label for="tel">Twój numer telefonu:</label><br>
+            <input id="tel" type="text"><br>
+            <input id="zgoda" type="checkbox"><label for="zgoda">Zgadzam się na przetwarzanie danych osobowych</label><br>
+            <button type="reset">WYCZYŚĆ</button>
+            <button type="submit">REZERWUJ</button>
+        </form>
+    </section>
+    <footer>
+        Stronę internetową opracował: <i>00224444444</i>
+    </footer>
+</body>
+</html>
