@@ -1,1 +1,9 @@
-{}
+{
+    "[php]": {
+        "editor.formatOnType": true,
+        "editor.autoIndent": "brackets"
+    },
+    "emmet.includeLanguages": {
+        "php": "html"
+    }
+}
