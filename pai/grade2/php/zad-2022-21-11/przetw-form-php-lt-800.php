@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <?php
+    <?php # Dla PHP starszego niż wersja 8
     $FORM_IS_FILLED = isset( $_POST['ok'] );
 
     $spr = [
@@ -22,12 +22,12 @@
     /**
      * Validates a form field.
      * 
-     * @param string|array $post The reference to POST data from the form.
+     * @param mixed $post The reference to POST data from the form.
      * @param string $regexp The regular expression to check against. Default: `/(?:)/`
      * @param string $type The form field's data type. Default: `text`
      * @return string `is-valid` or `is-invalid`. This is a class name used by Bootstrap. If form checking is disabled e.g. with the `$FORM_IS_FILLED` variable, returns an empty string.
      */
-    function validate(string|array $post, string $regexp = '/(?:)/', string $type = 'text'): string {
+    function validate($post, string $regexp = '/(?:)/', string $type = 'text'): string {
         # Workaround because you can't use expressions that depend
         # on variables as default arguments (must be known at
         # compile time)
