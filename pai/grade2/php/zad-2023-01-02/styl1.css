@@ -1,0 +1,49 @@
+#naglowek {
+	height:80px;
+	background-color:#40271A;
+	font-family:Tahoma;
+	color:white;
+	text-align:center;
+}
+#kol1{
+	float:left;
+	width:40%;
+	height:700px;
+	background-color:#DBB29C;
+}
+#kol2{
+	float:left;
+	width:60%;
+	height:700px;
+	background-color:#FFE3D4;
+}
+#stopka{
+	background-color:#40271A;
+	color:white;
+	text-align:right;
+}
+#obrazek{
+	padding:30px;
+}
+
+ol{ 
+list-style-type:upper-roman;
+}
+
+ol li {
+	padding-left: 10px;
+}
+#tabelka{
+	width:500px;
+	margin:10px;
+	text-align:center;
+	border: 1px dashed brown;
+}
+tr td {
+	border: 1px dashed brown;
+}
+
+.wiersz{
+	width:30%;
+}
+	
