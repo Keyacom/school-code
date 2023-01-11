@@ -1,0 +1,1 @@
+Credits to https://icons.getbootstrap.com/ for the icons, and to https://www.x-kom.pl/ for PC images.
