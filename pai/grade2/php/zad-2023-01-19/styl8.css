@@ -1,0 +1,49 @@
+@charset 'UTF-8';
+
+html {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+nav, header {
+    background-color: #63AC74;
+    color: Orange;
+    height: 140px;
+    width: 50%;
+    text-align: right;
+    font-size: 160%;
+    float: left;
+}
+
+main {
+    display: block;
+    background-color: #E3F6E7;
+    height: 500px;
+    padding: 20px;
+    clear: both;
+}
+
+footer > * {
+    background-color: #63ac74;
+    height: 150px;
+    width: 25%;
+    float: left;
+}
+
+a {
+    color: orange;
+    margin: 15px;
+}
+
+table {
+    width: 100%;
+    border: 2px solid green;
+}
+
+th {
+    background-color: #63ac74;
+    color: white;
+}
+
+td.cena {
+    text-align: right;
+}
