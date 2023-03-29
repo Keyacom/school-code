@@ -1,0 +1,246 @@
+@charset 'utf-8';
+/********************************
+*                               *
+* Copyright (C) MORIS 2022-2022 *
+* Wszelkie prawa zastrzeżone.   *
+*                               *
+********************************/
+
+:root {
+    --k-tło-podstawowe: #555;
+    --k-tło-drugorzędne: #222;
+    --k-tekst-podstawowy: #0e0;
+    --k-tekst-drugorzędny: #eee;
+    --zo-małe: 0.75rem;
+    --zo-średnie: 1rem;
+    --zo-duże: 1.5rem;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Inconsolata;
+    src: url(Inconsolata/static/Inconsolata/Inconsolata-Regular.ttf);
+}
+
+@font-face {
+    font-family: Inconsolata;
+    src: url(Inconsolata/static/Inconsolata/Inconsolata-Medium.ttf);
+    font-weight: bold;
+}
+
+html {
+    background-color: var(--k-tło-podstawowe);
+    color: var(--k-tekst-podstawowy);
+    font-family: Inconsolata, Consolas, 'Courier New', Courier, monospace, monospace;
+    line-height: 1.25;
+    margin: var(--zo-średnie);
+}
+
+:is(#naglowek, #wyszukaj)::after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+header h1 {
+    float: left;
+    margin-block: 0.3rem;
+    font-size: 2.5rem;
+}
+
+nav {
+    float: right;
+}
+
+nav a {
+    color: inherit;
+    
+}
+
+nav a:not(:hover, :active) {
+    text-decoration: none;
+}
+
+nav ul {
+    font-size: 1.25rem;
+    margin: 0.25rem 0;
+}
+
+nav li {
+    font-weight: bold;
+}
+
+nav li::marker {
+    content: '|  ';
+}
+
+nav li.current::marker {
+    content: '|> ';
+}
+
+input[type="search" i] {
+    appearance: textfield;
+}
+
+input, select {
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: 1px solid var(--k-tło-podstawowe);
+    border-radius: var(--zo-średnie);
+}
+
+#wyszukaj {
+    margin-bottom: var(--zo-małe);
+}
+
+#nrs, #szukaj {
+    text-align: center;
+}
+
+main, footer {
+    border: 3px solid var(--k-tekst-podstawowy);
+    border-radius: var(--zo-duże);
+    padding: var(--zo-małe);
+    background-color: var(--k-tło-drugorzędne);
+}
+
+main {
+    display: block; /* starsze wersje IE */
+}
+
+footer {
+    margin-top: var(--zo-średnie);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--zo-duże);
+}
+
+select {
+    appearance: none;
+    text-align: center;
+    width: 27ch;
+}
+
+.select-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.select-wrapper .dd-triangle {
+    display: inline-block;
+    position: absolute;
+    right: 0.5em;
+    pointer-events: none;
+}
+
+select option {
+    background-color: var(--k-tło-podstawowe);
+}
+
+main h2 {
+    margin: 0;
+    display: inline;
+}
+
+main h2 :not(:last-child)::after {
+    content: ' |';
+}
+
+main header .z-prawej {
+    float: right;
+    font-size: 1.5rem;
+}
+
+main header .z-prawej :where(select, input) {
+    background-color: var(--k-tło-podstawowe);
+}
+
+main article {
+    overflow-y: auto;
+    max-height: 558px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--zo-średnie);
+}
+
+main::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.produkt {
+    background-color: var(--k-tło-podstawowe);
+    float: left;
+    padding: var(--zo-małe);
+    border-radius: var(--zo-średnie);
+    border: 2px solid var(--k-tekst-podstawowy);
+    color: var(--k-tekst-drugorzędny);
+}
+
+.produkt .obraz {
+    height: 210px;
+    width: 240px;
+    overflow: hidden;
+    border-radius: var(--zo-małe);
+    border: 2px solid var(--k-tekst-podstawowy);
+    margin-bottom: var(--zo-małe);
+}
+
+.produkt .nazwa {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+}
+
+.produkt a {
+    color: inherit;
+}
+
+.produkt .opis {
+    white-space: pre-line;
+}
+
+body {
+    scrollbar-color: var(--k-tekst-podstawowy) var(--k-tło-podstawowe);
+}
+
+body ::-webkit-scrollbar {
+    background-color: var(--k-tło-podstawowe);
+    width: var(--zo-duże);
+}
+
+body ::-webkit-scrollbar-thumb {
+    background-color: var(--k-tekst-podstawowy);
+}
+
+footer .kontakt .godziny {
+    font-size: 50%;
+    text-align: left;
+}
+
+footer .copyright {
+    text-align: right;
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+.icon {
+    --mask: none;
+    -webkit-mask-image: var(--mask);
+    mask-image: var(--mask);
+    aspect-ratio: 1 / 1;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--k-tekst-podstawowy);
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    vertical-align: middle;
+}

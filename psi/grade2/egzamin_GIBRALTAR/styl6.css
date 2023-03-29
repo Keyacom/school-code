@@ -1,0 +1,56 @@
+html {
+    font-family: 'Georgia', serif;
+}
+
+#lewa {
+    background-color: maroon;
+    color: white;
+    height: 600px;
+    float: left;
+    width: 30%;
+}
+
+#prawa {
+    background-color: maroon;
+    color: white;
+    height: 600px;
+    float: left;
+    width: 70%;
+    overflow: auto;
+}
+
+footer {
+    background-color: dimgray;
+    color: white;
+}
+
+#prawa img, #prawa ul {
+    float: left;
+}
+
+#prawa ul {
+    list-style: inherit;
+}
+
+#prawa p {
+    clear: left;
+}
+
+p {
+    padding: 10px;
+}
+
+img {
+    padding: 10px;
+    border: 1px solid white;
+}
+
+#kolor-tla-I {
+    background-color: Indigo;
+}
+#kolor-tla-S {
+    background-color: SteelBlue;
+}
+#kolor-tla-O {
+    background-color: Olive;
+}

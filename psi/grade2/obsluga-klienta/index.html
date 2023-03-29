@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--
+    Copyright (C) MORIS 2022-2022
+    Wszelkie prawa zastrzeżone.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="styles.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MORIS | Sklep</title>
+</head>
+<body>
+    <div id="naglowek">
+        <header>
+            <h1>MORIS</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#">O firmie</a></li>
+                <li class="current"><a href="#">Sklep</a></li>
+                <li><a href="#">Kontakt</a></li>
+                <li><a href="#">Konto</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main id="wyniki-wyszukiwania">
+        <header>
+            <form id="wyszukaj">
+                <h2>
+                    <span>Komputery stacjonarne</span>
+                    <span>25 wyników</span>
+                    <span>
+                        Strona <input id="nrs" value="1" name="nrs" pattern="\d+" inputmode="numeric" minlength="1" maxlength="1" size="1"> z 2
+                    </span>
+                </h2>
+                <div class="z-prawej">
+                    <div class="select-wrapper">
+                        <select id="sort" name="sort">
+                            <option value="TR-MAX">trafność: malejąco</option>
+                            <option value="CE-MIN">cena: rosnąco</option>
+                            <option value="CE-MAX">cena: malejąco</option>
+                            <option value="OC-MIN">średnia ocena: rosnąco</option>
+                            <option value="OC-MAX">średnia ocena: malejąco</option>
+                            <option value="PO-MAX">popularność: malejąco</option>
+                        </select>
+                        <span class="dd-triangle">▼</span>
+                    </div>
+                    <input type="search" id="szukaj" name="szukaj" placeholder="szukaj">
+                </div>
+            </form>
+        </header>
+        <article>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/g4m3r_hero.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">G4M3R HERO</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    RTX 3060
+                    16G RAM
+                    6450,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/acer_nitro_50.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">Acer Nitro 50</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    GTX 1650
+                    16G RAM
+                    3499,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/dell_vostro_3710.png" width="260" height="225" style="margin: -10px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">Dell Vostro 3710</a>
+                </div>
+                <div class="opis">
+                    Win11P
+                    i3 12100F
+                    UHD 730
+                    8G RAM
+                    2699,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/hp_victus_15l.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">HP Victus 15L</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    RTX 3060
+                    16G RAM
+                    5999,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/g4m3r_hero.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">G4M3R HERO</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    RTX 3060
+                    16G RAM
+                    6450,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/acer_nitro_50.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">Acer Nitro 50</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    GTX 1650
+                    16G RAM
+                    3499,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/dell_vostro_3710.png" width="260" height="225" style="margin: -10px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">Dell Vostro 3710</a>
+                </div>
+                <div class="opis">
+                    Win11P
+                    i3 12100F
+                    UHD 730
+                    8G RAM
+                    2699,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/hp_victus_15l.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">HP Victus 15L</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    RTX 3060
+                    16G RAM
+                    5999,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/g4m3r_hero.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">G4M3R HERO</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    RTX 3060
+                    16G RAM
+                    6450,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/acer_nitro_50.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">Acer Nitro 50</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    GTX 1650
+                    16G RAM
+                    3499,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/dell_vostro_3710.png" width="260" height="225" style="margin: -10px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">Dell Vostro 3710</a>
+                </div>
+                <div class="opis">
+                    Win11P
+                    i3 12100F
+                    UHD 730
+                    8G RAM
+                    2699,00 zł
+                </div>
+            </section>
+            <section class="produkt">
+                <div class="obraz">
+                    <a href="#"><img src="img/hp_victus_15l.png" width="260" height="225" style="margin: -3px 0 0 -10px;"></a>
+                </div>
+                <div class="nazwa">
+                    <a href="#">HP Victus 15L</a>
+                </div>
+                <div class="opis">
+                    Win11H
+                    i5 12400F
+                    RTX 3060
+                    16G RAM
+                    5999,00 zł
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <div class="kontakt">
+            <span class="icon" style="--mask: url(img/telephone-fill.svg)"></span> 68 501 32 21
+            <table class="godziny">
+                <tr>
+                    <th scope="row">pon. - pt.</th>
+                    <td>8:00 - 21:00</td>
+                </tr>
+                <tr>
+                    <th scope="row">sob. - niedz.</th>
+                    <td>8:00 - 19:00</td>
+                </tr>
+            </table>
+            <span class="icon" style="--mask: url(img/envelope-fill.svg)"></span> moris@moris.pl
+        </div>
+        <div class="copyright">Copyright (C) MORIS 2022-2022
+            Wszelkie prawa zastrzeżone.
+        </div>
+    </footer>
+</body>
+</html>
