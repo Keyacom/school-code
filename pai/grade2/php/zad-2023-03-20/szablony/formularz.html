@@ -1,0 +1,38 @@
+<script src="/2TAmz2/zad-2023-03-20/formularz/walidacja.js" defer></script>
+<h1>Formularz rejestracyjny</h1>
+<form action="/2TAmz2/zad-2023-03-20/" method="post" id="form-rejestracja">
+  <table class="formularz">
+    <tr>
+      <th><label for="login">Login</label></th>
+      <td><input type="text" id="login" name="login" required></td>
+    </tr>
+    <tr>
+      <th><label for="haslo">Hasło</label></th>
+      <td><input type="password" id="haslo" name="haslo" required></td>
+    </tr>
+    <tr>
+      <th><label for="powt-haslo">Powtórz hasło</label></th>
+      <td><input type="password" id="powt-haslo" required></td>
+      <!-- To pole nie zostanie przesłane do skryptu! -->
+    </tr>
+    <tr>
+      <th><label for="imie">Imię</label></th>
+      <td><input type="text" id="imie" name="imie" required></td>
+    </tr>
+    <tr>
+      <th><label for="nazwisko">Nazwisko</label></th>
+      <td><input type="text" id="nazwisko" name="nazwisko" required></td>
+    </tr>
+    <tr>
+      <th><label for="email">Adres e-mail</label></th>
+      <td><input type="email" id="email" name="email" required></td>
+    </tr>
+    <tr>
+      <th><label for="tel">Nr telefonu</label></th>
+      <td><input type="tel" id="tel" name="tel" required></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="ok" id="przeslij" value="Zarejestruj się!"></td>
+    </tr>
+  </table>
+</form>

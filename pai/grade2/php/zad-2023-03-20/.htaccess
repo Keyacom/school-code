@@ -1,0 +1,3 @@
+# Dokumenty: komunikaty o błędach
+ErrorDocument 403 "/2TAmz2/zad-2023-03-20/blad.php"
+ErrorDocument 404 "/2TAmz2/zad-2023-03-20/blad.php"

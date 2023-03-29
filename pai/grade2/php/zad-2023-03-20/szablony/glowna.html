@@ -1,0 +1,60 @@
+<h1>Eduszach</h1>
+<h2>Odpowiedz sobie na te pytania!</h2>
+<section>
+  <h3>Jak się rusza skoczek?</h3>
+  <p>Skoczek rusza się o dwa pola pionowo bądź poziomo, a potem jedno pole w bok. Skoczek też może przeskakiwać nad innymi figurami.</p>
+</section>
+<section>
+  <h3>Kiedy mogę wykonać bicie w przelocie?</h3>
+  <p>Po przekroczeniu połowy szachownicy (czyli jeśli biały pion znajduje się na 5. linii, lub czarny na 4. linii), jeśli przeciwnik ruszy pion o dwa pola, że sąsiaduje z Twoim pionem, to jedynie w tym ruchu możesz go zbić!</p>
+</section>
+<section>
+  <h3>Na czym polega atak smażonej wątróbki?</h3>
+  <p>To jest otwarcie szachowe będące pochodną partii włoskiej, o poniższych ruchach:</p>
+  <ol>
+    <li>e4 e5</li>
+    <li>Sf3 Sc6</li>
+    <li>Gc4 Sf6</li>
+    <li>Sg5 d5</li>
+    <li>exd5 Sxd5?!</li>
+  </ol>
+  <p>Bardzo często po tym biały poświęca skoczka (6. Sxf7 Kxf7). Kolejne możliwe ruchy, które doprowadzają do mata w 10 ruchach, to:</p>
+  <ol start="7">
+    <li>Hf3+ Kg8??</li>
+    <li>Gxd5+ Hxd5</li>
+    <li>Hxd5+ Ge6</li>
+    <li>Hxe6#</li>
+  </ol>
+  <p>Taka możliwość pochodzi bezpośrednio od ruchu 7...Kg8??, przy czym oznaczenie ruchu dwoma znakami zapytania (??) oznacza poważny błąd.</p>
+  <p>Nazwa pochodzi od tego, że czarny król, który znajduje się pod atakiem białych, jest bowiem <em>smażony</em> jak fegatello (potrawa włoska z wątroby wieprzowej).</p>
+</section>
+<section>
+  <h3>Co to jest mat operowy?</h3>
+  <p>To jest mat polegający na tym, że matuje wieża broniona przez gońca.</p>
+  <p>Paul Morphy był swego czasu jednym z najlepszych szachistów na świecie. Rozegrał on w 1858 r. partię przeciwko Karolowi II i hrabiemu Isouardowi. Partia zakończyła się tym, że Morphy poświęcił hetmana ruchem 16. Hb8+, ale chociaż czarny skoczek zabrał hetmana, to i tak gracze dysponujący czarnymi przegrali (16...Sxb8 17. Wd8#). Goniec na g5 bronił wieży.</p>
+  <p>Nazwa "mat operowy" wzięła się od tego, że partia odbyła się w paryskiej operze. Sama partia też bywa nazywana "partią operową".</p>
+</section>
+<section>
+  <h3>Jak "zwidełkować" przeciwnika?</h3>
+  <p>Widełki to atak na dwie lub więcej bierek. Polega on na tym, że jeśli uratuje się jedną z bierek, to drugiej zazwyczaj nie można już uratować.</p>
+</section>
+<section>
+  <h3>Jak zapisywać pozycje szachowe?</h3>
+  <p>Do tego służy notacja Forsytha-Edwardsa, składająca się z sześciu pól oddzielonych spacjami:</p>
+  <ol>
+    <li>Bierki na szachownicy (z perspektywy białych)
+      <ul>
+        <li>Bierka jest reprezentowana przez literę: P &mdash; pion, R &mdash; wieża, N &mdash; skoczek, B &mdash; goniec, Q &mdash; hetman, K &mdash; król. Czarne bierki są oznaczane małymi literami, a białe &mdash; wielkimi.</li>
+        <li>Puste miejsca są oznaczane cyfrą, co oznacza liczbę wolnych miejsc.</li>
+        <li>Kolejne linie są oddzielane ukośnikami (/).</li>
+      </ul>
+    </li>
+    <li>Czyj ruch? (w &mdash; białych, b &mdash; czarnych)</li>
+    <li>Dostępne roszady (K &mdash; roszada krótka, Q &mdash; roszada długa). Roszady czarnych są oznaczane małymi literami, białych &mdash; wielkimi. To nie uwzględnia tymczasowych warunków niepozwalających na roszadę.</li>
+    <li>Dostępność bicia w przelocie. Tu jest zapisywane pole docelowe takiego bicia, nawet jeśli nie ma piona w odpowiedniej pozycji.</li>
+    <li>Liczba posunięć po ostatnim posunięciu piona lub zbiciu. Używane do zaimplementowania reguły 50 posunięć.</li>
+    <li>Liczba posunięć czarnych (zaczyna się od 1).</li>
+  </ol>
+  <p>Puste pola są zaznaczane kreską (-).</p>
+  <p>Pozycja początkowa zapisana w notacji Forsytha-Edwardsa to <code>rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1</code>. Jest to krytyczny element zapisywania gier Chess960, w których pozycja początkowa jest niekoniecznie taka sama, jak w normalnych szachach.</p>
+</section>
