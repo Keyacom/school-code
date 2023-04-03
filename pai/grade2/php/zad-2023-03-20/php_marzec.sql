@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3336
--- Generation Time: Mar 29, 2023 at 08:44 PM
--- Wersja serwera: 5.7.33
--- Wersja PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Czas generowania: 03 Kwi 2023, 09:02
+-- Wersja serwera: 10.4.22-MariaDB
+-- Wersja PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `php_marzec`
+-- Baza danych: `php_marzec`
 --
 
 -- --------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `dane` (
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `haslo` char(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tel` char(9) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `admin` tinyint(4) NOT NULL DEFAULT '0',
+  `admin` tinyint(4) NOT NULL DEFAULT 0,
   `rejestracja_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -73,22 +73,6 @@ ALTER TABLE `dane`
 ALTER TABLE `rejestracja`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `login` (`login`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `dane`
---
-ALTER TABLE `dane`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `rejestracja`
---
-ALTER TABLE `rejestracja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

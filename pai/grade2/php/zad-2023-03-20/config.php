@@ -15,8 +15,8 @@ $config = [
         /** Nazwa hosta serwera bazy danych. */
         'host' => 'localhost',
         /** Port serwera bazy danych. */
-        //'port' => 3306,
-        'port' => 3336,
+        'port' => 3306,
+        //'port' => 3336,
         /** Nazwa użytkownika serwera bazy danych. */
         'username' => 'root',
         /** Hasło użytkownika serwera bazy danych. */

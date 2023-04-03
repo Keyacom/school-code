@@ -99,3 +99,23 @@ function tryOutput(DOMDocument $document) {
 function uTrim($e) {
     return preg_replace('/\A\s+|\s+\Z/u', '', $e);
 }
+
+/** Alternatywa dla mysqli::execute_query, które nie istnieje w mysqli dla PHP 8.1 lub starszych */
+function execQuery(mysqli $conn, string $query, array $params): bool|mysqli_result {
+    if ($stmt = $conn->prepare($query)) {
+        if (!$stmt->execute($params)) {
+            trigger_error("Failed to execute statement", E_USER_ERROR);
+            return false;
+        }
+        $res = $stmt->get_result();
+        if (!$conn->errno) {
+            return $res;
+        } else {
+            trigger_error("Failed to fetch result from execution (MySQL Error {$conn->errno}: {$conn->error})", E_USER_ERROR);
+            return false;
+        }
+    } else {
+        trigger_error("Failed to create statement object", E_USER_ERROR);
+        return false;
+    }
+}

@@ -20,7 +20,7 @@ if ($zFormularza && $db != null) {
         // Wszystkie sprawdzenia pól zostały wykonane w przeglądarce, więc można już przejść do kwerendy
 
         // Bezpieczny sposób wykonywania kwerend z mysqli::execute_query (brak obaw o apostrofy)
-        $db->execute_query(<<<SQL
+        execQuery($db, <<<SQL
         INSERT INTO rejestracja
         (`login`, haslo, imie, nazwisko, email, tel, `data`)
         VALUES
@@ -31,7 +31,7 @@ if ($zFormularza && $db != null) {
         // Dla kwerend bez wejść end usera po prostu korzystam z query
         $nrRejestracji = $db->query("SELECT MAX(id) FROM rejestracja;")->fetch_all()[0][0];
 
-        $db->execute_query(<<<SQL
+        execQuery($db, <<<SQL
         INSERT INTO dane
         (`login`, haslo, imie, nazwisko, email, tel, rejestracja_id)
         VALUES

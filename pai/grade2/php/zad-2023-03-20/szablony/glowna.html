@@ -18,7 +18,8 @@
     <li>Sg5 d5</li>
     <li>exd5 Sxd5?!</li>
   </ol>
-  <p>Bardzo często po tym biały poświęca skoczka (6. Sxf7 Kxf7). Kolejne możliwe ruchy, które doprowadzają do mata w 10 ruchach, to:</p>
+  <p>Bardzo często po tym biały poświęca skoczka (6. Sxf7 Kxf7). Poświęcenie widełkuje hetmana i wieżę, a zbicie sprawia, że czarny nie może wykonać roszady.</p>
+  <p>Kolejne możliwe ruchy, które doprowadzają do mata, to:</p>
   <ol start="7">
     <li>Hf3+ Kg8??</li>
     <li>Gxd5+ Hxd5</li>
@@ -42,19 +43,38 @@
   <h3>Jak zapisywać pozycje szachowe?</h3>
   <p>Do tego służy notacja Forsytha-Edwardsa, składająca się z sześciu pól oddzielonych spacjami:</p>
   <ol>
-    <li>Bierki na szachownicy (z perspektywy białych)
+    <li>Szachownica (z perspektywy białych), podzielona na linie
       <ul>
-        <li>Bierka jest reprezentowana przez literę: P &mdash; pion, R &mdash; wieża, N &mdash; skoczek, B &mdash; goniec, Q &mdash; hetman, K &mdash; król. Czarne bierki są oznaczane małymi literami, a białe &mdash; wielkimi.</li>
-        <li>Puste miejsca są oznaczane cyfrą, co oznacza liczbę wolnych miejsc.</li>
-        <li>Kolejne linie są oddzielane ukośnikami (/).</li>
+        <li>Bierka jest reprezentowana przez literę pochodzącą od angielskiej nazwy: <code>P</code> (pawn) &mdash; pion, <code>R</code> (rook) &mdash; wieża, <code>N</code> (knight) &mdash; skoczek, <code>B</code> (bishop) &mdash; goniec, <code>Q</code> (queen) &mdash; hetman, <code>K</code> (king) &mdash; król. Czarne bierki są oznaczane małymi literami, a białe &mdash; wielkimi.</li>
+        <li>Puste pola są oznaczane liczbą tych pól, np. <code>6</code> oznacza sześć pustych pól.</li>
+        <li>Kolejne linie są oddzielane ukośnikami (<code>/</code>).</li>
       </ul>
     </li>
-    <li>Czyj ruch? (w &mdash; białych, b &mdash; czarnych)</li>
-    <li>Dostępne roszady (K &mdash; roszada krótka, Q &mdash; roszada długa). Roszady czarnych są oznaczane małymi literami, białych &mdash; wielkimi. To nie uwzględnia tymczasowych warunków niepozwalających na roszadę.</li>
-    <li>Dostępność bicia w przelocie. Tu jest zapisywane pole docelowe takiego bicia, nawet jeśli nie ma piona w odpowiedniej pozycji.</li>
-    <li>Liczba posunięć po ostatnim posunięciu piona lub zbiciu. Używane do zaimplementowania reguły 50 posunięć.</li>
+    <li>Czyj ruch? (<code>w</code> (white) &mdash; białych, <code>b</code> (black) &mdash; czarnych)</li>
+    <li>Dostępne roszady: <code>K</code> (kingside castle) &mdash; roszada krótka, <code>Q</code> (queenside castle) &mdash; roszada długa. Roszady czarnych są oznaczane małymi literami, białych &mdash; wielkimi. To nie uwzględnia tymczasowych warunków niepozwalających na roszadę, więc jest tylko zmieniane po pierwszym posunięciu króla bądź wieży. Jeśli żaden gracz nie ma możliwości wykonania roszady, to pole jest wypełniane kreską (<code>-</code>).</li>
+    <li>Dostępność bicia w przelocie. Tu jest zapisywane pole docelowe takiego bicia, nawet jeśli nie ma piona w odpowiedniej pozycji. Jeśli nie ma spełnionych warunków do wypełnienia tego pola, to jest wypełniane kreską (<code>-</code>).</li>
+    <li>Liczba posunięć po ostatnim posunięciu piona lub biciu. Używane do zaimplementowania reguły 50 posunięć, według której dowolny gracz może zażądać w tej sytuacji remisu.</li>
     <li>Liczba posunięć czarnych (zaczyna się od 1).</li>
   </ol>
-  <p>Puste pola są zaznaczane kreską (-).</p>
-  <p>Pozycja początkowa zapisana w notacji Forsytha-Edwardsa to <code>rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1</code>. Jest to krytyczny element zapisywania gier Chess960, w których pozycja początkowa jest niekoniecznie taka sama, jak w normalnych szachach.</p>
+  <p>Pozycja początkowa zapisana w notacji Forsytha-Edwardsa to <code>rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1</code>.</p>
+  <p>Jest to krytyczny element zapisywania gier Chess960, w których pozycja początkowa jest niekoniecznie taka sama, jak w normalnych szachach.</p>
+</section>
+<section>
+  <h3>Czym są szachy 960?</h3>
+  <p>To wariant szachów wynaleziony i opracowany 19 czerwca 1996 r. przez ówczesnego mistrza świata Bobby'ego Fischera. Pozycje początkowe figur na skrajnych liniach są losowe, z tym że:</p>
+  <ul>
+    <li>król znajduje się między wieżami,</li>
+    <li>gońce znajdują się na polach o przeciwnych kolorach.</li>
+  </ul>
+  <p>Zarówno dla białych, jak i dla czarnych kolumny, w których stoją figury, są takie same.</p>
+  <p>Nazwa "szachy 960" (ang. Chess960) bierze się z tego, że jest w tym możliwe 960 początkowych pozycji. Skrypt generujący wszystkie możliwe takie pozycje znajduje się <a href="https://replit.com/@Keyacom/Chess960-Initial-Positions?v=1">tutaj</a>.</p>
+  <p>Roszady mają specjalną zasadę oznaczania w notacji algebraicznej: roszada po stronie kolumny A jest oznaczana <code>O-O-O</code>, a roszada po stronie kolumny H jest oznaczana <code>O-O</code>. Roszady są też możliwe, gdy król ma mniej niż dwa pola od krawędzi szachownicy.</p>
+</section>
+<h2>Osiągnięcia twórcy tej witryny</h2>
+<section>
+  <h3><a href="https://lichess.org/xcc0hF3k/black">Przypadkowy mat</a></h3>
+  <section>
+    <p>Po ruchu 21. Se2, mój hetman znalazł się w sytuacji bez wyjścia. Ponieważ stracę go, nie wiadomo jak się nim ruszę, chciałem zrobić wymianę hetmanów, grając ruch 21...Wxe3#.</p>
+    <p>To był nieoczekiwany mat, ponieważ miałem inny zamiar. Wieża blokuje białemu królowi pola na szóstce, hetman blokuje f4, a skoczek blokuje g4.</p>
+  </section>
 </section>

@@ -7,41 +7,46 @@ $config['db']['transaction'] = false;
 
 $zFormularza = isset($_POST['ok']);
 $blad = 'Nie można się połączyć z serwerem bazy danych!';
-if (!$zFormularza) {
-    $blad = 'Nie jesteś zalogowany!';
-}
+
 [$out, $db] = createDocument('', 'Użytkownicy', $config);
 
-if ($zFormularza && $db != null) {
-    $wynik = $db->execute_query(
-        <<<SQL
-        SELECT id, `admin` FROM dane
-        WHERE `login` = ?
-        AND `haslo` = ?
-        SQL,
-        // login i zaszyfrowane hasło
-        [$_POST['login'], $config['hashFunc']($_POST['haslo'])],
-    );
+if ($db != null) {
+    $wynik = null;
+    if ($zFormularza) {
+        $wynik = execQuery($db,
+            <<<SQL
+            SELECT id, `admin` FROM dane
+            WHERE `login` = ?
+            AND `haslo` = ?
+            SQL,
+            // login i zaszyfrowane hasło
+            [uTrim($_POST['login']), $config['hashFunc'](uTrim($_POST['haslo']))],
+        );
+    } else {
+        $blad = 'Nie jesteś zalogowany!';
+    }
     $html = [];
-    if ($wynik->num_rows == 0) {
+    if ($wynik != null && $wynik->num_rows == 0) {
         $blad = 'Błędne dane logowania!';
     } else {
-        [$userId, $isAdmin] = $wynik->fetch_all()[0];
+        if ($zFormularza) {
+            [$userId, $isAdmin] = $wynik->fetch_all()[0];
+            $dodatek = '';
+            $tab = [];
+            if (!$isAdmin) {
+                $dodatek = 'WHERE id = ?';
+                $tab = [$userId];
+            }
+            $wynik = execQuery($db, "SELECT `login`, `haslo` FROM dane $dodatek;", $tab);
+        }
         $html[] = <<<HTML
         <h1>Baza użytkowników</h1>
-        <table border="1" style="border-collapse: collapse;">
+        <table class="table">
             <tr>
                 <th>Nazwa użytkownika</th>
                 <th>Hash hasła</th>
             </tr>
         HTML;
-        $dodatek = '';
-        $tab = [];
-        if (!$isAdmin) {
-            $dodatek = 'WHERE id = ?';
-            $tab = [$userId];
-        }
-        $wynik = $db->execute_query("SELECT `login`, `haslo` FROM dane $dodatek;", $tab);
     }
     if ($wynik) {
         foreach ($wynik as $wiersz) {

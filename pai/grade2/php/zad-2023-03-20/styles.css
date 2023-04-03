@@ -22,7 +22,8 @@ html {
   background-image: linear-gradient(to bottom, #00000000 50%, var(--color-sec) 100%), repeating-conic-gradient(var(--color-pri) 0% 25%, #FFFFFF 0% 50%);
   background-size: 100%, 6rem 6rem;
   background-position: top, center;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 body {
@@ -77,9 +78,10 @@ main {
   border-radius: 1rem 1rem 0 0;
   padding: 1.5rem;
   min-height: calc(100vh - var(--footer-height) - var(--nav-height) - 2 * var(--nav-margin));
-  margin: 0 min(100px, 6rem);
+  margin: 0 auto;
   border: 0.25rem solid var(--mcolor-sec);
   border-bottom: none;
+  max-width: 50rem;
 }
 
 footer {
@@ -94,4 +96,73 @@ footer {
 table.formularz > tr > th,
 table.formularz > * > tr > th {
   text-align: right;
+}
+
+table.table {
+  border: 1px solid var(--tcolor-pri);
+  border-radius: 0.6rem;
+  padding: 0.1rem;
+  background-color: var(--mcolor-sec);
+  border-spacing: 1px;
+}
+
+table.table > * > tr > th,
+table.table > tr > th,
+table.table > * > tr > td,
+table.table > tr > td {
+  /* border: 1px solid var(--mcolor-sec); */
+  padding: 0.2rem;
+}
+
+table.table > * > tr > th,
+table.table > tr > th {
+  background-color: var(--color-pri);
+}
+
+table.table > * > tr > td,
+table.table > tr > td {
+  background-color: var(--mcolor);
+}
+
+:is(table.table > * > tr:first-child > th,
+table.table > tr:first-child > th,
+table.table > * > tr:first-child > td,
+table.table > tr:first-child > td):first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+:is(table.table > * > tr:first-child > th,
+table.table > tr:first-child > th,
+table.table > * > tr:first-child > td,
+table.table > tr:first-child > td):last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+:is(table.table > * > tr:last-child > th,
+table.table > tr:last-child > th,
+table.table > * > tr:last-child > td,
+table.table > tr:last-child > td):first-child {
+  border-bottom-left-radius: 0.5rem;
+}
+
+:is(table.table > * > tr:last-child > th,
+table.table > tr:last-child > th,
+table.table > * > tr:last-child > td,
+table.table > tr:last-child > td):last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+
+code {
+  font-family: 'JetBrains Mono', Menlo, Monaco, Consolas, 'Courier New', Courier, monospace, monospace;
+  padding: 0.1rem;
+  background-color: var(--tcolor-sec);
+  border-radius: 0.3rem;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: underline;
 }
