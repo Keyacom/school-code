@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <title>Powtórzenie CSS</title>
+</head>
+<body>
+    <nav id="nav">
+        <menu>
+            <li><a href="https://bulbapedia.bulbagarden.net/wiki/Core_series">Starsze gry</a></li>
+            <li><a href="https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Brilliant_Diamond_and_Shining_Pearl">Brilliant Diamond i&nbsp;Shining Pearl</a></li>
+            <li><a href="https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Legends:_Arceus">Legends: Arceus</a></li>
+            <li><a href="https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Scarlet_and_Violet">Scarlet i&nbsp;Violet</a></li>
+        </menu>
+    </nav>
+    <form>
+        <label for="imie">Imię</label>
+        <input type="text" name="imie" id="imie" placeholder="Podaj imię">
+        <label for="nazwisko">Nazwisko</label>
+        <input type="text" name="nazwisko" id="nazwisko" placeholder="Podaj nazwisko">
+        <label for="wiek">Wiek</label>
+        <input type="number" name="wiek" id="wiek" placeholder="Podaj wiek">
+        <label for="kraj">Kraj</label>
+        <select name="kraj" id="kraj">
+            <option value="PL">Polska</option>
+            <option value="CZ">Czechy</option>
+            <option value="SK">Słowacja</option>
+            <option value="UA">Ukraina</option>
+            <option value="LT">Litwa</option>
+        </select>
+        <input type="submit" value="Prześlij">
+    </form>
+</body>
+</html>
