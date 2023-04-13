@@ -30,7 +30,12 @@ function createDocument(string $content, string $pageName = '', array $localConf
             trigger_error("Nie można się połączyć z serwerem bazy danych!", E_USER_ERROR);
         }
         if ($localConfig['db']['transaction']) {
-            if (!$dbConnection?->begin_transaction()) {
+            if (
+                !(
+                    $dbConnection->autocommit(false)
+                 && $dbConnection->begin_transaction()
+                )
+            ) {
                 trigger_error("Nie można rozpocząć transakcji!", E_USER_ERROR);
             }
         }
