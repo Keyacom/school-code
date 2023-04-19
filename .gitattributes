@@ -20,6 +20,7 @@
 *.css             linguist-detectable
 *.js              linguist-detectable
 *.php             linguist-detectable
+*.cpp             text linguist-detectable
 
 # Source code
 *.bash            text eol=lf
