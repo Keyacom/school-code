@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     int n, d = 2; // d od razu jest przypisane tutaj
     cin >> n; // pobierz liczbę od użytkownika
-    int pierwsza = n > 1; // sprawdź, czy n jest wi�ksze od 1
+    int pierwsza = n > 1; // sprawdź, czy n jest większe od 1
     // Dla wartości logicznych można używać typu int,
     // ponieważ 0 oznacza fałsz, a inne liczby oznaczają prawdę
     while (pierwsza && d*d <= n) {
