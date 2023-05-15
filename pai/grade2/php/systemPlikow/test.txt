@@ -1,0 +1,1 @@
+Pierwszy skrypt z wykorzystaniem operacji na plikach i katalogach w PHP
