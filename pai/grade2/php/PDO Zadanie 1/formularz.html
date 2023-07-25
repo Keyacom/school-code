@@ -1,0 +1,58 @@
+ <html>
+  <head>
+   <meta charset="UTF-8" />
+    <title>Dodaj ogłoszenie</title>
+    <link rel="stylesheet" href="styl3.css" type="text/css" />
+  </head>
+  <body>    
+ <header id="naglowek"><h1>Portal Ogłoszeniowy</h1>
+</header>
+
+<section id="lewy"> <br><h2><b>Kategorie</b></h2>
+<br>
+<ol>
+	<li>Książki</li>
+	<li>Muzyka</li>
+	<li>Filmy</li>
+</ol>
+<br>
+<h2><b>Podkategorie</b></h2>
+<br>
+<ol>
+	<li>Romans</li>
+	<li>Biografia</li>
+	<li>Kryminał</li>
+	<li>Komiks</li>
+</ol>
+<br>
+<img src="ksiazki2.jpg" alt="Dodaj ogłoszenie" id="obrazek"/>
+<br>
+<br>
+<a href="kwerendy.txt">Pobierz kwerendy</a>
+
+</section>
+
+<section id="prawy"> <h2><b>Anna Kowalska - dodanie ogłoszenia</b></h2>
+<br>
+
+<form action="dodajRekord.php" method="post">
+Kategoria: <br/>
+ <input type="number" name="kategorie"><br>
+Podkategoria: <br/>
+ <input type="number" name="podkategorie"><br>
+Tytuł: <br/>
+ <input type="text" name="tytul"><br>
+Treść: <br/>
+<textarea name="tresc" rows="10" cols="40" id="pole_tekstowe"></textarea>
+ <br>
+  <input type="reset" value="WYCZYŚĆ" name="wyczysc" id="reset">
+  <input type="submit" value="ZAPISZ" name="wyslij" id="wyslij">
+
+</form>
+
+</section>
+
+<footer id="stopka"><p>Portal ogłoszeniowy opracował: XXXXXXXXX</p>
+ </footer>
+</body>
+</html>

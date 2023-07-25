@@ -1,0 +1,16 @@
+- Zapytanie 1: wybieraj¹ce jedynie pola id, tytul i tresc z tabeli ogloszenie dla tych rekordów, dla których kategoria to ksi¹¿ki
+ 
+select id, tytul, tresc FROM ogloszenie WHERE kategoria = 1 
+
+
+- Zapytanie 2: wykorzystuj¹ce relacjê pomiêdzy tabelami i wybieraj¹ce jedynie telefon tego u¿ytkownika, który jest przypisany do og³oszenia numer 1
+ 
+SELECT telefon FROM uzytkownik JOIN ogloszenie ON ogloszenie.uzytkownik_id=uzytkownik.id WHERE ogloszenie.id=1 
+
+- Zapytanie 3: tworz¹ce u¿ytkownika moderator na localhost z has³em qwerty 
+ 
+CREATE USER 'moderator'@'localhost' IDENTIFIED BY 'qwerty' 
+
+- Zapytanie 4: nadaj¹ce prawa dla u¿ytkownika moderator do usuwania i przegl¹dania danych w tabeli ogloszenie.
+
+GRANT SELECT, DELETE ON ogloszenie TO 'moderator'@'localhost' 
